@@ -1,8 +1,8 @@
-# phaser-platformer
+# mirror
 
-<kbd>phaser-platformer</kbd> is a template for making [Phaser](https://phaser.io/) platformer games.
+<kbd>mirror</kbd> is a [Phaser](https://phaser.io/) platformer game.
 
-The template is based off of [`phaser-template`](https://github.com/remarkablegames/phaser-template).
+The template is based off of [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer).
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ The template is based off of [`phaser-template`](https://github.com/remarkablega
 Clone the repository:
 
 ```sh
-git clone https://github.com/remarkablegames/phaser-platformer.git
-cd phaser-platformer
+git clone https://github.com/remarkablegames/mirror.git
+cd mirror
 ```
 
 Install the dependencies:

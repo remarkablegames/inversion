@@ -1,5 +1,5 @@
 {
-  "name": "phaser-platformer",
+  "name": "mirror",
   "version": "1.0.0-alpha",
   "description": "A template for building Phaser platformer games.",
   "author": "Mark <mark@remarkablemark.org>",
@@ -13,7 +13,7 @@
     "start": "parcel --open",
     "tsc": "tsc --noEmit"
   },
-  "homepage": "https://remarkablegames.org/phaser-platformer/",
+  "homepage": "https://remarkablegames.org/mirror/",
   "dependencies": {
     "phaser": "3.55.2"
   },
