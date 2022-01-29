@@ -1,0 +1,39 @@
+{
+  "name": "phaser-platformer",
+  "version": "1.0.0-alpha",
+  "description": "A template for building Phaser platformer games.",
+  "author": "Mark <mark@remarkablemark.org>",
+  "source": "public/index.html",
+  "scripts": {
+    "build": "parcel build",
+    "clean": "rm -rf .parcel-cache/ dist/",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "postinstall": "husky install",
+    "start": "parcel --open",
+    "tsc": "tsc --noEmit"
+  },
+  "homepage": "https://remarkablegames.org/phaser-platformer/",
+  "dependencies": {
+    "phaser": "3.55.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@parcel/packager-raw-url": "^2.2.1",
+    "@parcel/transformer-webmanifest": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.7.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.1",
+    "parcel": "^2.2.1",
+    "prettier": "^2.5.1",
+    "standard-version": "^9.3.2",
+    "typescript": "^4.5.5"
+  },
+  "private": true,
+  "license": "MIT"
+}
