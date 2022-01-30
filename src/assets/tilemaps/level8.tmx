@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextlayerid="12" nextobjectid="17">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="17">
  <editorsettings>
   <export target="level8.json" format="json"/>
  </editorsettings>
@@ -7177,14 +7177,6 @@
    </properties>
   </tile>
  </tileset>
- <objectgroup id="9" name="Objects">
-  <object id="12" name="SpawnB" x="1270" y="180" rotation="360">
-   <point/>
-  </object>
-  <object id="13" name="SpawnA" x="10" y="180">
-   <point/>
-  </object>
- </objectgroup>
  <layer id="6" name="Ground" width="40" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -7209,4 +7201,12 @@
 13,13,13,13,13,13,13,20,20,20,20,20,20,20,20,13,13,13,13,13,2147483661,2147483661,2147483661,2147483661,2147483661,2147483668,2147483668,2147483668,2147483668,2147483668,2147483668,2147483668,2147483668,2147483661,2147483661,2147483661,2147483661,2147483661,2147483661,2147483661
 </data>
  </layer>
+ <objectgroup id="9" name="Objects">
+  <object id="12" name="SpawnB" x="1270" y="180" rotation="360">
+   <point/>
+  </object>
+  <object id="13" name="SpawnA" x="10" y="180">
+   <point/>
+  </object>
+ </objectgroup>
 </map>
