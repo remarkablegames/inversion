@@ -1,45 +1,8 @@
 {
-  "backgroundcolor": "#ffffff",
   "compressionlevel": -1,
   "height": 20,
   "infinite": false,
   "layers": [
-    {
-      "draworder": "topdown",
-      "id": 9,
-      "name": "Objects",
-      "objects": [
-        {
-          "height": 0,
-          "id": 10,
-          "name": "SpawnB",
-          "point": true,
-          "rotation": 360,
-          "type": "",
-          "visible": true,
-          "width": 0,
-          "x": 1270,
-          "y": 605
-        },
-        {
-          "height": 0,
-          "id": 11,
-          "name": "SpawnA",
-          "point": true,
-          "rotation": 0,
-          "type": "",
-          "visible": true,
-          "width": 0,
-          "x": 10,
-          "y": 605
-        }
-      ],
-      "opacity": 1,
-      "type": "objectgroup",
-      "visible": true,
-      "x": 0,
-      "y": 0
-    },
     {
       "data": [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -87,6 +50,42 @@
       "type": "tilelayer",
       "visible": true,
       "width": 40,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 9,
+      "name": "Objects",
+      "objects": [
+        {
+          "height": 0,
+          "id": 10,
+          "name": "SpawnB",
+          "point": true,
+          "rotation": 360,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 1270,
+          "y": 605
+        },
+        {
+          "height": 0,
+          "id": 11,
+          "name": "SpawnA",
+          "point": true,
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 10,
+          "y": 605
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
       "x": 0,
       "y": 0
     }
