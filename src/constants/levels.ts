@@ -1,9 +1,9 @@
 import ant from '../assets/tilemaps/ant.json';
 import asymmetrical from '../assets/tilemaps/asymmetrical.json';
+import box from '../assets/tilemaps/box.json';
 import dilbert from '../assets/tilemaps/dilbert.json';
 import down from '../assets/tilemaps/down.json';
 import invert from '../assets/tilemaps/invert.json';
-import level8 from '../assets/tilemaps/level8.json';
 import level10 from '../assets/tilemaps/level10.json';
 import precise from '../assets/tilemaps/precise.json';
 import start from '../assets/tilemaps/start.json';
@@ -29,6 +29,8 @@ export const levels = [
 
   // 7
   dilbert,
-  level8,
+
+  // 8
+  box,
   level10,
 ] as const;
