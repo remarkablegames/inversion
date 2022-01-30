@@ -69,7 +69,8 @@ export default class Main extends Phaser.Scene {
           tile.getCenterX(),
           tile.getCenterY(),
           key.image.spike
-        );
+        ) as Phaser.Physics.Arcade.Sprite;
+        spike.setTint(0xff6e6e);
 
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body placement
         spike.rotation = tile.rotation;
