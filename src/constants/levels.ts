@@ -10,29 +10,56 @@ import start from '../assets/tilemaps/start.json';
 
 export const levels = [
   // 1
-  start,
+  {
+    text: 'Arrow/WASD to move & jump',
+    json: start,
+  },
 
   // 2
-  invert,
+  {
+    text: 'Press Spacebar to invert player',
+    json: invert,
+  },
 
   // 3
-  down,
+  {
+    text: '',
+    json: down,
+  },
 
   // 4
-  precise,
+  {
+    text: '',
+    json: precise,
+  },
 
   // 5
-  asymmetrical,
+  {
+    text: '',
+    json: asymmetrical,
+  },
 
   // 6
-  ant,
+  {
+    text: '',
+    json: ant,
+  },
 
   // 7
-  dilbert,
+  {
+    text: '',
+    json: dilbert,
+  },
 
   // 8
-  box,
+  {
+    text: '',
+    json: box,
+  },
 
   // 9
-  challenge,
+  {
+    text: '',
+    json: challenge,
+  },
 ] as const;

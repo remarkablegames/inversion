@@ -4,10 +4,9 @@ import { color, key, levels } from '../constants';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
-  private boxGroup!: Phaser.Physics.Arcade.Group;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
-  private level!: number;
+  private levelData!: { level: number; json: object; text: string };
   private playerA!: Player;
   private playerB!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
@@ -18,17 +17,21 @@ export default class Main extends Phaser.Scene {
   }
 
   init(data: { level: number }) {
-    this.level = data.level;
-  }
-
-  preload() {
-    const levelJSON = levels[this.level - 1];
-    if (!levelJSON) {
+    const { level } = data;
+    const levelData = levels[level - 1];
+    if (!levelData) {
       this.scene.start(key.scene.main, { level: 1 });
       return;
     }
-    this.tilemapKey = key.tilemap.map + this.level;
-    this.load.tilemapTiledJSON(this.tilemapKey, levelJSON);
+    this.levelData = {
+      ...levelData,
+      level,
+    };
+  }
+
+  preload() {
+    this.tilemapKey = key.tilemap.map + this.levelData.level;
+    this.load.tilemapTiledJSON(this.tilemapKey, this.levelData.json);
   }
 
   create() {
@@ -64,7 +67,7 @@ export default class Main extends Phaser.Scene {
     // sprite is hovering over the spikes. We'll remove the spike tiles and turn them into sprites
     // so that we give them a more fitting hitbox
     this.spikeGroup = this.physics.add.staticGroup();
-    this.boxGroup = this.physics.add.group();
+    const boxGroup = this.physics.add.group();
     this.groundLayer.forEachTile((tile) => {
       if (tile.index === 77) {
         const spike = this.spikeGroup.create(
@@ -88,7 +91,7 @@ export default class Main extends Phaser.Scene {
       }
 
       if (tile.index === 6) {
-        const box = this.boxGroup.create(
+        const box = boxGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),
           key.image.box
@@ -98,14 +101,14 @@ export default class Main extends Phaser.Scene {
       }
     });
 
-    [this.playerA, this.playerB, this.boxGroup, this.groundLayer].forEach(
-      (object) => this.physics.world.addCollider(object, this.boxGroup)
+    [this.playerA, this.playerB, boxGroup, this.groundLayer].forEach((object) =>
+      this.physics.world.addCollider(object, boxGroup)
     );
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    this.renderHelpText();
-    this.renderLevel(map, this.level);
+    this.renderText();
+    this.renderLevel(map, this.levelData.level);
 
     this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
     this.input.keyboard.on('keydown-R', () => this.scene.restart());
@@ -151,7 +154,7 @@ export default class Main extends Phaser.Scene {
       playerA,
       playerB,
       () => {
-        this.scene.start(key.scene.main, { level: this.level + 1 });
+        this.scene.start(key.scene.main, { level: this.levelData.level + 1 });
       },
       undefined,
       this
@@ -159,22 +162,13 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Help text that has a "fixed" position on the screen
+   * Display text on the top-left of the screen.
    */
-  private renderHelpText() {
-    let text = '';
-
-    switch (this.level) {
-      case 1:
-        text = 'Arrow/WASD to move & jump';
-        break;
-      case 2:
-        text = 'Press Spacebar to invert player';
-        break;
-      default:
-        return;
+  private renderText() {
+    const { text } = this.levelData;
+    if (!text) {
+      return;
     }
-
     this.add
       .text(32, 32, text, {
         font: '18px monospace',
@@ -184,7 +178,7 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Displays level number.
+   * Display level number on the top-right of the screen.
    */
   private renderLevel(map: Phaser.Tilemaps.Tilemap, level: number) {
     this.add
