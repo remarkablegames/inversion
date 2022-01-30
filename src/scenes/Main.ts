@@ -143,11 +143,23 @@ export default class Main extends Phaser.Scene {
    * Help text that has a "fixed" position on the screen
    */
   private renderHelpText() {
+    let text = '';
+
+    switch (this.level) {
+      case 1:
+        text = 'Arrow/WASD to move & jump';
+        break;
+      case 2:
+        text = 'Press Spacebar to invert player';
+        break;
+      default:
+        return;
+    }
+
     this.add
-      .text(16, 16, 'Arrow/WASD to move & jump', {
+      .text(32, 32, text, {
         font: '18px monospace',
         color: color.black,
-        padding: { x: 20, y: 10 },
       })
       .setScrollFactor(0);
   }
