@@ -4,7 +4,7 @@ import box from '../assets/tilemaps/box.json';
 import dilbert from '../assets/tilemaps/dilbert.json';
 import down from '../assets/tilemaps/down.json';
 import invert from '../assets/tilemaps/invert.json';
-import level10 from '../assets/tilemaps/level10.json';
+import challenge from '../assets/tilemaps/challenge.json';
 import precise from '../assets/tilemaps/precise.json';
 import start from '../assets/tilemaps/start.json';
 
@@ -32,5 +32,7 @@ export const levels = [
 
   // 8
   box,
-  level10,
+
+  // 9
+  challenge,
 ] as const;
