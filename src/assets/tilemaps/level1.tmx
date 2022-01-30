@@ -6150,19 +6150,17 @@
    </properties>
   </tile>
  </tileset>
- <objectgroup id="4" name="ObjectsA">
+ <objectgroup id="9" name="Objects">
+  <object id="7" name="SpawnB" x="1270" y="600" rotation="360">
+   <point/>
+  </object>
+  <object id="1" name="WinB" x="650" y="605">
+   <point/>
+  </object>
+  <object id="8" name="SpawnA" x="10" y="600">
+   <point/>
+  </object>
   <object id="9" name="Win" x="630" y="605">
-   <point/>
-  </object>
-  <object id="8" name="Spawn Point" x="10" y="600">
-   <point/>
-  </object>
- </objectgroup>
- <objectgroup id="9" name="ObjectsB">
-  <object id="7" name="Spawn Point" x="1270" y="600" rotation="360">
-   <point/>
-  </object>
-  <object id="1" name="Win" x="650" y="605">
    <point/>
   </object>
  </objectgroup>

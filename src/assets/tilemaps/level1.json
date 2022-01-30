@@ -6,49 +6,13 @@
   "layers": [
     {
       "draworder": "topdown",
-      "id": 4,
-      "name": "ObjectsA",
-      "objects": [
-        {
-          "height": 0,
-          "id": 9,
-          "name": "Win",
-          "point": true,
-          "rotation": 0,
-          "type": "",
-          "visible": true,
-          "width": 0,
-          "x": 630,
-          "y": 605
-        },
-        {
-          "height": 0,
-          "id": 8,
-          "name": "Spawn Point",
-          "point": true,
-          "rotation": 0,
-          "type": "",
-          "visible": true,
-          "width": 0,
-          "x": 10,
-          "y": 600
-        }
-      ],
-      "opacity": 1,
-      "type": "objectgroup",
-      "visible": true,
-      "x": 0,
-      "y": 0
-    },
-    {
-      "draworder": "topdown",
       "id": 9,
-      "name": "ObjectsB",
+      "name": "Objects",
       "objects": [
         {
           "height": 0,
           "id": 7,
-          "name": "Spawn Point",
+          "name": "SpawnB",
           "point": true,
           "rotation": 360,
           "type": "",
@@ -60,13 +24,37 @@
         {
           "height": 0,
           "id": 1,
-          "name": "Win",
+          "name": "WinB",
           "point": true,
           "rotation": 0,
           "type": "",
           "visible": true,
           "width": 0,
           "x": 650,
+          "y": 605
+        },
+        {
+          "height": 0,
+          "id": 8,
+          "name": "SpawnA",
+          "point": true,
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 10,
+          "y": 600
+        },
+        {
+          "height": 0,
+          "id": 9,
+          "name": "Win",
+          "point": true,
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 630,
           "y": 605
         }
       ],

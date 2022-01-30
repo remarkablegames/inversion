@@ -4,7 +4,8 @@ import { key } from '../constants';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
-  private player!: Player;
+  private playerA!: Player;
+  private playerB!: Player;
   private isPlayerDead = false;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
@@ -22,21 +23,26 @@ export default class Main extends Phaser.Scene {
       key.image.tiles
     );
 
-    map.createLayer('ObjectsA', tiles);
-    map.createLayer('ObjectsB', tiles);
+    map.createLayer('Objects', tiles);
     this.groundLayer = map.createLayer('Ground', tiles);
 
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
-    const spawnPoint = map.findObject(
+    const spawnPointA = map.findObject(
       'Objects',
-      (obj) => obj.name === 'Spawn Point'
+      (obj) => obj.name === 'SpawnA'
     );
-    this.player = new Player(this, spawnPoint?.x || 0, spawnPoint?.y || 0);
+    const spawnPointB = map.findObject(
+      'Objects',
+      (obj) => obj.name === 'SpawnB'
+    );
+    this.playerA = new Player(this, spawnPointA?.x || 0, spawnPointA?.y || 0);
+    this.playerB = new Player(this, spawnPointB?.x || 0, spawnPointB?.y || 0);
 
     // Collide the player against the ground layer - here we are grabbing the sprite property from
     // the player (since the Player class is not a Phaser.Sprite).
     this.groundLayer.setCollisionByProperty({ collides: true });
-    this.physics.world.addCollider(this.player, this.groundLayer);
+    this.physics.world.addCollider(this.playerA, this.groundLayer);
+    this.physics.world.addCollider(this.playerB, this.groundLayer);
 
     // The map contains a row of spikes. The spike only take a small sliver of the tile graphic, so
     // if we let arcade physics treat the spikes as colliding, the player will collide while the
@@ -63,7 +69,6 @@ export default class Main extends Phaser.Scene {
       }
     });
 
-    this.cameras.main.startFollow(this.player);
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     // Help text that has a "fixed" position on the screen
@@ -82,11 +87,14 @@ export default class Main extends Phaser.Scene {
       return;
     }
 
-    this.player.update();
+    this.playerA.update();
+    this.playerB.update();
 
     if (
-      this.player.y > this.groundLayer.height ||
-      this.physics.world.overlap(this.player, this.spikeGroup)
+      this.playerA.y > this.groundLayer.height ||
+      this.playerB.y > this.groundLayer.height ||
+      this.physics.world.overlap(this.playerA, this.spikeGroup) ||
+      this.physics.world.overlap(this.playerB, this.spikeGroup)
     ) {
       // Flag that the player is dead so that we can stop update from running in the future
       this.isPlayerDead = true;
@@ -95,10 +103,12 @@ export default class Main extends Phaser.Scene {
       this.cameras.main.fade(250, 0, 0, 0);
 
       // Freeze the player to leave them on screen while fading but remove the marker immediately
-      this.player.freeze();
+      this.playerA.freeze();
+      this.playerB.freeze();
 
       this.cameras.main.once('camerafadeoutcomplete', () => {
-        this.player.destroy();
+        this.playerA.destroy();
+        this.playerB.destroy();
         this.scene.restart();
       });
     }
