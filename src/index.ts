@@ -2,6 +2,7 @@ import './style.css';
 
 import Phaser from 'phaser';
 
+import { color } from './constants';
 import scenes from './scenes';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -10,8 +11,8 @@ const isProduction = process.env.NODE_ENV === 'production';
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
  */
 new Phaser.Game({
-  width: 1280, // 32 * 40
-  height: 640, // 32 * 20
+  width: 1280, // 32px * 40 tiles
+  height: 640, // 32px * 20 tiles
   title: 'Mirror',
   url: 'https://remarkablegames.org/mirror/',
   version: process.env.VERSION,
@@ -26,7 +27,7 @@ new Phaser.Game({
     },
   },
   disableContextMenu: isProduction,
-  backgroundColor: '#1d212d',
+  backgroundColor: color.black,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,

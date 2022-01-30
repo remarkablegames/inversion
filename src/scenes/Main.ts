@@ -1,13 +1,13 @@
 import Phaser from 'phaser';
 
-import { key } from '../constants';
+import { color, key } from '../constants';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
+  private groundLayer!: Phaser.Tilemaps.TilemapLayer;
+  private isPlayerDead!: boolean;
   private playerA!: Player;
   private playerB!: Player;
-  private isPlayerDead = false;
-  private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
 
   constructor() {
@@ -18,15 +18,24 @@ export default class Main extends Phaser.Scene {
     this.isPlayerDead = false;
 
     const map = this.make.tilemap({ key: key.tilemap.map });
+
+    // First half of screen has white background
+    this.add.rectangle(
+      0,
+      0,
+      map.widthInPixels,
+      map.heightInPixels * 2,
+      color.whiteHex
+    );
+
     const tiles = map.addTilesetImage(
       '0x72-industrial-tileset-32px-extruded',
       key.image.tiles
     );
 
-    map.createLayer('Objects', tiles);
     this.groundLayer = map.createLayer('Ground', tiles);
 
-    // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
+    // Instantiate a player instance at the location of the spawn point object in the Tiled map
     const spawnPointA = map.findObject(
       'Objects',
       (obj) => obj.name === 'SpawnA'
@@ -70,10 +79,13 @@ export default class Main extends Phaser.Scene {
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body
         // placement
         spike.rotation = tile.rotation;
-        if (spike.angle === 0) spike.body.setSize(32, 6).setOffset(0, 26);
-        else if (spike.angle === -90)
+        if (spike.angle === 0) {
+          spike.body.setSize(32, 6).setOffset(0, 26);
+        } else if (spike.angle === -90) {
           spike.body.setSize(6, 32).setOffset(26, 0);
-        else if (spike.angle === 90) spike.body.setSize(6, 32).setOffset(0, 0);
+        } else if (spike.angle === 90) {
+          spike.body.setSize(6, 32).setOffset(0, 0);
+        }
 
         this.groundLayer.removeTileAt(tile.x, tile.y);
       }
@@ -85,9 +97,8 @@ export default class Main extends Phaser.Scene {
     this.add
       .text(16, 16, 'Arrow/WASD to move & jump', {
         font: '18px monospace',
-        color: '#000',
+        color: color.black,
         padding: { x: 20, y: 10 },
-        backgroundColor: '#fff',
       })
       .setScrollFactor(0);
   }
