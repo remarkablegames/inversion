@@ -4,17 +4,13 @@ import { key } from '../constants';
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  private isInverted: boolean;
   body!: Phaser.Physics.Arcade.Body;
 
-  constructor(
-    scene: Phaser.Scene,
-    x: number,
-    y: number,
-    texture = key.spritesheet.player,
-    frame = 0
-  ) {
-    super(scene, x, y, texture, frame);
+  constructor(scene: Phaser.Scene, x: number, y: number, isInverted: boolean) {
+    super(scene, x, y, key.spritesheet.player);
 
+    this.isInverted = isInverted;
     // Add the sprite to the scene
     scene.add.existing(this);
 
@@ -32,6 +28,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       .setMaxVelocity(300, 400)
       .setSize(18, 24)
       .setOffset(7, 9);
+
+    // Set player facing direction
+    this.setFlipX(this.isInverted);
   }
 
   freeze() {
@@ -58,16 +57,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   update() {
     const acceleration = this.body.blocked.down ? 600 : 200;
+    const invertedMultiplier = this.isInverted ? -1 : 1;
 
     // Apply horizontal acceleration when left/a or right/d are applied
     if (this.cursors.left.isDown) {
-      this.setAccelerationX(-acceleration);
+      this.setAccelerationX(-acceleration * invertedMultiplier);
       // No need to have a separate set of graphics for running to the left & to the right. Instead
       // we can just mirror the sprite.
-      this.setFlipX(true);
+      this.setFlipX(this.isInverted ? false : true);
     } else if (this.cursors.right.isDown) {
-      this.setAccelerationX(acceleration);
-      this.setFlipX(false);
+      this.setAccelerationX(acceleration * invertedMultiplier);
+      this.setFlipX(this.isInverted ? true : false);
     } else {
       this.setAccelerationX(0);
     }

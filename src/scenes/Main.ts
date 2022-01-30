@@ -35,8 +35,18 @@ export default class Main extends Phaser.Scene {
       'Objects',
       (obj) => obj.name === 'SpawnB'
     );
-    this.playerA = new Player(this, spawnPointA?.x || 0, spawnPointA?.y || 0);
-    this.playerB = new Player(this, spawnPointB?.x || 0, spawnPointB?.y || 0);
+    this.playerA = new Player(
+      this,
+      spawnPointA?.x || 0,
+      spawnPointA?.y || 0,
+      false
+    );
+    this.playerB = new Player(
+      this,
+      spawnPointB?.x || 0,
+      spawnPointB?.y || 0,
+      true
+    );
 
     // Collide the player against the ground layer - here we are grabbing the sprite property from
     // the player (since the Player class is not a Phaser.Sprite).
