@@ -107,6 +107,7 @@ export default class Main extends Phaser.Scene {
     this.renderHelpText();
 
     this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
+    this.input.keyboard.on('keydown-R', () => this.scene.restart());
   }
 
   private invertPlayers() {
