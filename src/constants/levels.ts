@@ -1,10 +1,10 @@
 import ant from '../assets/tilemaps/ant.json';
 import asymmetrical from '../assets/tilemaps/asymmetrical.json';
 import box from '../assets/tilemaps/box.json';
+import challenge from '../assets/tilemaps/challenge.json';
 import dilbert from '../assets/tilemaps/dilbert.json';
 import down from '../assets/tilemaps/down.json';
 import invert from '../assets/tilemaps/invert.json';
-import challenge from '../assets/tilemaps/challenge.json';
 import precise from '../assets/tilemaps/precise.json';
 import start from '../assets/tilemaps/start.json';
 
