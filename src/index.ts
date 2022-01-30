@@ -10,8 +10,8 @@ const isProduction = process.env.NODE_ENV === 'production';
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
  */
 new Phaser.Game({
-  width: 1200,
-  height: 600,
+  width: 1280, // 32 * 40
+  height: 640, // 32 * 20
   title: 'Mirror',
   url: 'https://remarkablegames.org/mirror/',
   version: process.env.VERSION,

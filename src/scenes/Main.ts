@@ -22,9 +22,9 @@ export default class Main extends Phaser.Scene {
       key.image.tiles
     );
 
-    map.createLayer('Background', tiles);
+    map.createLayer('ObjectsA', tiles);
+    map.createLayer('ObjectsB', tiles);
     this.groundLayer = map.createLayer('Ground', tiles);
-    map.createLayer('Foreground', tiles);
 
     // Instantiate a player instance at the location of the "Spawn Point" object in the Tiled map
     const spawnPoint = map.findObject(
@@ -68,7 +68,7 @@ export default class Main extends Phaser.Scene {
 
     // Help text that has a "fixed" position on the screen
     this.add
-      .text(16, 16, 'Arrow/WASD to move & jump\nLeft click to draw platforms', {
+      .text(16, 16, 'Arrow/WASD to move & jump', {
         font: '18px monospace',
         color: '#000',
         padding: { x: 20, y: 10 },
