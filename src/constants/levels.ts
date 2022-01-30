@@ -23,43 +23,43 @@ export const levels = [
 
   // 3
   {
-    text: '',
+    text: "Don't look down",
     json: down,
   },
 
   // 4
   {
-    text: '',
+    text: 'Jump carefully...',
     json: precise,
   },
 
   // 5
   {
-    text: '',
+    text: "Something's different",
     json: asymmetrical,
   },
 
   // 6
   {
-    text: '',
+    text: 'Go down the rabbit hole',
     json: ant,
   },
 
   // 7
   {
-    text: '',
+    text: 'Face your troubles',
     json: dilbert,
   },
 
   // 8
   {
-    text: '',
+    text: "What's with the box?",
     json: box,
   },
 
   // 9
   {
-    text: '',
+    text: 'Think carefully...',
     json: challenge,
   },
 ] as const;
