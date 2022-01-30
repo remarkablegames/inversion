@@ -34,28 +34,8 @@ export default class Main extends Phaser.Scene {
     );
 
     this.groundLayer = map.createLayer('Ground', tiles);
-
-    // Instantiate a player instance at the location of the spawn point object in the Tiled map
-    const spawnPointA = map.findObject(
-      'Objects',
-      (obj) => obj.name === 'SpawnA'
-    );
-    const spawnPointB = map.findObject(
-      'Objects',
-      (obj) => obj.name === 'SpawnB'
-    );
-    this.playerA = new Player(
-      this,
-      spawnPointA?.x || 0,
-      spawnPointA?.y || 0,
-      false
-    );
-    this.playerB = new Player(
-      this,
-      spawnPointB?.x || 0,
-      spawnPointB?.y || 0,
-      true
-    );
+    this.spawnPlayers(map);
+    this.overlapPlayers(this.playerA, this.playerB);
 
     // Collide the player against the ground layer
     this.groundLayer.setCollisionByProperty({ collides: true });
@@ -91,7 +71,54 @@ export default class Main extends Phaser.Scene {
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    // Help text that has a "fixed" position on the screen
+    this.renderHelpText();
+  }
+
+  /**
+   * Instantiate player instances at the location of the spawn point object in the Tiled map.
+   */
+  private spawnPlayers(map: Phaser.Tilemaps.Tilemap) {
+    const spawnPointA = map.findObject(
+      'Objects',
+      (obj) => obj.name === 'SpawnA'
+    );
+
+    const spawnPointB = map.findObject(
+      'Objects',
+      (obj) => obj.name === 'SpawnB'
+    );
+
+    this.playerA = new Player(
+      this,
+      spawnPointA?.x || 0,
+      spawnPointA?.y || 0,
+      false
+    );
+
+    this.playerB = new Player(
+      this,
+      spawnPointB?.x || 0,
+      spawnPointB?.y || 0,
+      true // inverted
+    );
+  }
+
+  private overlapPlayers(playerA: Player, playerB: Player) {
+    this.physics.add.overlap(
+      playerA,
+      playerB,
+      (/* playerA, playerB */) => {
+        // console.log('Win', playerA, playerB);
+      },
+      undefined,
+      this
+    );
+  }
+
+  /**
+   * Help text that has a "fixed" position on the screen
+   */
+  private renderHelpText() {
     this.add
       .text(16, 16, 'Arrow/WASD to move & jump', {
         font: '18px monospace',
