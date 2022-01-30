@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextlayerid="12" nextobjectid="12">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="32" tileheight="32" infinite="0" backgroundcolor="#ffffff" nextlayerid="12" nextobjectid="13">
  <editorsettings>
-  <export target="level4.json" format="json"/>
+  <export format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="0x72-industrial-tileset-32px-extruded" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="1024" columns="32">
   <image source="../tilesets/0x72-industrial-tileset-32px-extruded.png" width="1088" height="1088"/>
@@ -6173,7 +6173,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,13,13,0,0,0,0,0,13,13,13,0,0,0,0,0,0,0,0,0,0,2147483661,2147483661,2147483661,0,0,0,0,0,2147483661,2147483661,0,0,0,0,0,
+0,0,0,0,0,13,13,0,0,0,13,13,13,13,13,0,0,0,0,0,0,0,0,0,0,2147483661,2147483661,2147483661,2147483661,2147483661,0,0,0,2147483661,2147483661,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,0,0,2147483661,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483661,2147483661,2147483661,0,0,

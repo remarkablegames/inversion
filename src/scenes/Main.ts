@@ -4,6 +4,7 @@ import { color, key, levels } from '../constants';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
+  private boxGroup!: Phaser.Physics.Arcade.Group;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
   private level!: number;
@@ -63,6 +64,7 @@ export default class Main extends Phaser.Scene {
     // sprite is hovering over the spikes. We'll remove the spike tiles and turn them into sprites
     // so that we give them a more fitting hitbox
     this.spikeGroup = this.physics.add.staticGroup();
+    this.boxGroup = this.physics.add.group();
     this.groundLayer.forEachTile((tile) => {
       if (tile.index === 77) {
         const spike = this.spikeGroup.create(
@@ -84,7 +86,21 @@ export default class Main extends Phaser.Scene {
 
         this.groundLayer.removeTileAt(tile.x, tile.y);
       }
+
+      if (tile.index === 6) {
+        const box = this.boxGroup.create(
+          tile.getCenterX(),
+          tile.getCenterY(),
+          key.image.box
+        ) as Phaser.Physics.Arcade.Sprite;
+        box.setFriction(1);
+        this.groundLayer.removeTileAt(tile.x, tile.y);
+      }
     });
+
+    [this.playerA, this.playerB, this.boxGroup, this.groundLayer].forEach(
+      (object) => this.physics.world.addCollider(object, this.boxGroup)
+    );
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
@@ -105,12 +121,12 @@ export default class Main extends Phaser.Scene {
   private spawnPlayers(map: Phaser.Tilemaps.Tilemap) {
     const spawnPointA = map.findObject(
       'Objects',
-      (obj) => obj.name === 'SpawnA'
+      (object) => object.name === 'SpawnA'
     );
 
     const spawnPointB = map.findObject(
       'Objects',
-      (obj) => obj.name === 'SpawnB'
+      (object) => object.name === 'SpawnB'
     );
 
     this.playerA = new Player(

@@ -5,6 +5,7 @@ import level4 from '../assets/tilemaps/level4.json';
 import level5 from '../assets/tilemaps/level5.json';
 import level6 from '../assets/tilemaps/level6.json';
 import level7 from '../assets/tilemaps/level7.json';
+import level8 from '../assets/tilemaps/level8.json';
 import level10 from '../assets/tilemaps/level10.json';
 
 export const levels = [
@@ -15,5 +16,6 @@ export const levels = [
   level5,
   level6,
   level7,
+  level8,
   level10,
 ] as const;

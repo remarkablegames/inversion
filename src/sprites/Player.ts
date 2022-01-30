@@ -48,8 +48,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.createAnimations();
 
     // Create the physics-based sprite that we will move around and animate
-    this.setDrag(1000, 0)
-      .setMaxVelocity(300, 400)
+    this.setDrag(785, 0)
+      .setMaxVelocity(150, 785)
       .setSize(18, 24)
       .setOffset(7, 9);
 
@@ -105,8 +105,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   update() {
     const { isInverted, keys } = this;
-    const isBodyBlocked = this.body.blocked.down;
-    const acceleration = this.body.blocked.down ? 600 : 200;
+    const isStandingOnSurface =
+      this.body.blocked.down || this.body.touching.down;
+    const acceleration = isStandingOnSurface ? 600 : 150;
     const invertedMultiplier = this.isInverted ? -1 : 1;
 
     // Apply horizontal acceleration when left/a or right/d are applied
@@ -123,12 +124,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Only allow the player to jump if they are on the ground
-    if (isBodyBlocked && (keys.up.isDown || keys.w.isDown)) {
+    if (isStandingOnSurface && (keys.up.isDown || keys.w.isDown)) {
       this.setVelocityY(-500);
     }
 
     // Update the animation/texture based on the state of the player
-    if (isBodyBlocked) {
+    if (isStandingOnSurface) {
       if (this.body.velocity.x !== 0) {
         this.anims.play(Animation.PlayerRun, true);
       } else {

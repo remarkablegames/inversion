@@ -6,6 +6,7 @@ export const color = {
 
 export const key = {
   image: {
+    box: 'box',
     spike: 'spike',
     tiles: 'tiles',
   },

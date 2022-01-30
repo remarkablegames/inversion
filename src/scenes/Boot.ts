@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
 import spike from '../assets/images/0x72-industrial-spike.png';
+import box from '../assets/images/box.png';
 import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
 import tiles from '../assets/tilesets/0x72-industrial-tileset-32px-extruded.png';
 import { key } from '../constants';
@@ -17,11 +18,12 @@ export default class Boot extends Phaser.Scene {
       margin: 1,
       spacing: 2,
     });
+    this.load.image(key.image.box, box);
     this.load.image(key.image.spike, spike);
     this.load.image(key.image.tiles, tiles);
   }
 
   create() {
-    this.scene.start(key.scene.main, { level: 1 });
+    this.scene.start(key.scene.main, { level: 9 });
   }
 }
