@@ -1,6 +1,6 @@
-# mirror
+# inversion
 
-<kbd>mirror</kbd> is a [Phaser](https://phaser.io/) platformer game.
+<kbd>Inversion</kbd> is a 2D platformer puzzle game built with [Phaser](https://phaser.io/).
 
 The template is based off of [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer).
 
@@ -13,8 +13,8 @@ The template is based off of [`phaser-platformer`](https://github.com/remarkable
 Clone the repository:
 
 ```sh
-git clone https://github.com/remarkablegames/mirror.git
-cd mirror
+git clone https://github.com/remarkablegames/inversion.git
+cd inversion
 ```
 
 Install the dependencies:

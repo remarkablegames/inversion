@@ -13,8 +13,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 new Phaser.Game({
   width: 1280, // 32px * 40 tiles
   height: 640, // 32px * 20 tiles
-  title: 'Mirror',
-  url: 'https://remarkablegames.org/mirror/',
+  title: 'Inversion',
+  url: 'https://remarkablegames.org/inversion/',
   version: process.env.VERSION,
   scene: scenes,
   physics: {
