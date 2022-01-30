@@ -10,6 +10,7 @@ export default class Main extends Phaser.Scene {
   private playerA!: Player;
   private playerB!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
+  private tilemapKey!: string;
 
   constructor() {
     super({ key: key.scene.main });
@@ -20,17 +21,19 @@ export default class Main extends Phaser.Scene {
   }
 
   preload() {
-    const levelIndex = this.level - 1;
-    this.load.tilemapTiledJSON(
-      `${key.tilemap.map}${this.level}`,
-      levels[levelIndex]
-    );
+    const levelJSON = levels[this.level - 1];
+    if (!levelJSON) {
+      this.scene.start(key.scene.main, { level: 1 });
+      return;
+    }
+    this.tilemapKey = key.tilemap.map + this.level;
+    this.load.tilemapTiledJSON(this.tilemapKey, levelJSON);
   }
 
   create() {
     this.isPlayerDead = false;
 
-    const map = this.make.tilemap({ key: `${key.tilemap.map}${this.level}` });
+    const map = this.make.tilemap({ key: this.tilemapKey });
 
     // First half of screen has white background
     this.add.rectangle(
