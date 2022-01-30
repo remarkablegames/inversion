@@ -1,7 +1,7 @@
 import asymmetrical from '../assets/tilemaps/asymmetrical.json';
 import down from '../assets/tilemaps/down.json';
 import invert from '../assets/tilemaps/invert.json';
-import level6 from '../assets/tilemaps/level6.json';
+import ant from '../assets/tilemaps/ant.json';
 import level7 from '../assets/tilemaps/level7.json';
 import level8 from '../assets/tilemaps/level8.json';
 import level10 from '../assets/tilemaps/level10.json';
@@ -23,7 +23,9 @@ export const levels = [
 
   // 5
   asymmetrical,
-  level6,
+
+  // 6
+  ant,
   level7,
   level8,
   level10,
