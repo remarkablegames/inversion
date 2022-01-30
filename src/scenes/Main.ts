@@ -1,11 +1,12 @@
 import Phaser from 'phaser';
 
-import { color, key } from '../constants';
+import { color, key, levels } from '../constants';
 import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
+  private level!: number;
   private playerA!: Player;
   private playerB!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
@@ -14,10 +15,22 @@ export default class Main extends Phaser.Scene {
     super({ key: key.scene.main });
   }
 
+  init(data: { level: number }) {
+    this.level = data.level;
+  }
+
+  preload() {
+    const levelIndex = this.level - 1;
+    this.load.tilemapTiledJSON(
+      `${key.tilemap.map}${this.level}`,
+      levels[levelIndex]
+    );
+  }
+
   create() {
     this.isPlayerDead = false;
 
-    const map = this.make.tilemap({ key: key.tilemap.map });
+    const map = this.make.tilemap({ key: `${key.tilemap.map}${this.level}` });
 
     // First half of screen has white background
     this.add.rectangle(
@@ -115,8 +128,8 @@ export default class Main extends Phaser.Scene {
     this.physics.add.overlap(
       playerA,
       playerB,
-      (/* playerA, playerB */) => {
-        // console.log('Win', playerA, playerB);
+      () => {
+        this.scene.start(key.scene.main, { level: this.level + 1 });
       },
       undefined,
       this
