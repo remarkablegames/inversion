@@ -37,14 +37,28 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Set player facing direction
     this.setFlipX(this.isInverted);
+
+    // Set primary player color
+    if (!this.isInverted) {
+      this.toggleTint(!this.isInverted);
+    }
   }
 
   freeze() {
     this.body.moves = false;
   }
 
+  private toggleTint(isTinted: boolean) {
+    if (isTinted) {
+      this.setTint(0x01fff1);
+    } else {
+      this.clearTint();
+    }
+  }
+
   toggleInversion() {
     this.isInverted = !this.isInverted;
+    this.toggleTint(!this.isInverted);
   }
 
   private createAnimations() {
