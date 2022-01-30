@@ -1,4 +1,4 @@
-# inversion
+# Inversion
 
 <kbd>Inversion</kbd> is a 2D platformer puzzle game built with [Phaser](https://phaser.io/).
 
