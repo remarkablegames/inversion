@@ -6,6 +6,7 @@ import dilbert from '../assets/tilemaps/dilbert.json';
 import down from '../assets/tilemaps/down.json';
 import invert from '../assets/tilemaps/invert.json';
 import precise from '../assets/tilemaps/precise.json';
+import restart from '../assets/tilemaps/restart.json';
 import start from '../assets/tilemaps/start.json';
 
 export const levels = [
@@ -23,41 +24,47 @@ export const levels = [
 
   // 3
   {
+    text: 'Press R to restart the level',
+    json: restart,
+  },
+
+  // 4
+  {
     text: "Don't look down",
     json: down,
   },
 
-  // 4
+  // 5
   {
     text: 'Jump carefully...',
     json: precise,
   },
 
-  // 5
+  // 6
   {
     text: "Something's different",
     json: asymmetrical,
   },
 
-  // 6
+  // 7
   {
     text: 'Go down the rabbit hole',
     json: ant,
   },
 
-  // 7
+  // 8
   {
     text: 'Face your troubles',
     json: dilbert,
   },
 
-  // 8
+  // 9
   {
     text: "What's with the box?",
     json: box,
   },
 
-  // 9
+  // 10
   {
     text: 'Think carefully...',
     json: challenge,
