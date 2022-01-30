@@ -105,6 +105,7 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     this.renderHelpText();
+    this.renderLevel(map, this.level);
 
     this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
     this.input.keyboard.on('keydown-R', () => this.scene.restart());
@@ -178,6 +179,18 @@ export default class Main extends Phaser.Scene {
       .text(32, 32, text, {
         font: '18px monospace',
         color: color.black,
+      })
+      .setScrollFactor(0);
+  }
+
+  /**
+   * Displays level number.
+   */
+  private renderLevel(map: Phaser.Tilemaps.Tilemap, level: number) {
+    this.add
+      .text(map.widthInPixels - 112, 32, `Level ${level}`, {
+        font: '18px monospace',
+        color: color.white,
       })
       .setScrollFactor(0);
   }
