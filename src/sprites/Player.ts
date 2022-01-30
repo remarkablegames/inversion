@@ -105,9 +105,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   update() {
     const { isInverted, keys } = this;
-    const isStandingOnSurface =
-      this.body.blocked.down || this.body.touching.down;
-    const acceleration = isStandingOnSurface ? 600 : 150;
+    const onGround = this.body.blocked.down || this.body.touching.down;
+    const acceleration = onGround ? 600 : 150;
     const invertedMultiplier = this.isInverted ? -1 : 1;
 
     // Apply horizontal acceleration when left/a or right/d are applied
@@ -124,12 +123,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Only allow the player to jump if they are on the ground
-    if (isStandingOnSurface && (keys.up.isDown || keys.w.isDown)) {
+    if (onGround && (keys.up.isDown || keys.w.isDown)) {
       this.setVelocityY(-500);
     }
 
     // Update the animation/texture based on the state of the player
-    if (isStandingOnSurface) {
+    if (onGround) {
       if (this.body.velocity.x !== 0) {
         this.anims.play(Animation.PlayerRun, true);
       } else {
