@@ -72,6 +72,14 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     this.renderHelpText();
+
+    this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
+  }
+
+  private invertPlayers() {
+    [this.playerA, this.playerB].forEach((player) => {
+      player.toggleInversion();
+    });
   }
 
   /**

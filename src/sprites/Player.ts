@@ -43,6 +43,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.body.moves = false;
   }
 
+  toggleInversion() {
+    this.isInverted = !this.isInverted;
+  }
+
   private createAnimations() {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;

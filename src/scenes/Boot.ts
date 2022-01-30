@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 
 import spike from '../assets/images/0x72-industrial-spike.png';
 import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
-import map from '../assets/tilemaps/level1.json';
+import map from '../assets/tilemaps/level4.json';
 import tiles from '../assets/tilesets/0x72-industrial-tileset-32px-extruded.png';
 import { key } from '../constants';
 
