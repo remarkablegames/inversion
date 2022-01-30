@@ -7,14 +7,24 @@ enum Animation {
   PlayerRun = 'player-run',
 }
 
+interface Keys {
+  up: Phaser.Input.Keyboard.Key;
+  left: Phaser.Input.Keyboard.Key;
+  right: Phaser.Input.Keyboard.Key;
+  w: Phaser.Input.Keyboard.Key;
+  a: Phaser.Input.Keyboard.Key;
+  d: Phaser.Input.Keyboard.Key;
+}
+
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
-  private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  private keys: Keys;
   private isInverted: boolean;
 
   constructor(scene: Phaser.Scene, x: number, y: number, isInverted: boolean) {
     super(scene, x, y, key.spritesheet.player);
 
+    // Primary player is set to false
     this.isInverted = isInverted;
 
     // Add the sprite to the scene
@@ -23,8 +33,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Enable physics for the sprite
     scene.physics.world.enable(this);
 
-    // Add cursor keys
-    this.cursors = scene.input.keyboard.createCursorKeys();
+    // Track the arrow keys & WASD
+    const { UP, LEFT, RIGHT, W, A, D } = Phaser.Input.Keyboard.KeyCodes;
+    this.keys = scene.input.keyboard.addKeys({
+      up: UP,
+      left: LEFT,
+      right: RIGHT,
+      w: W,
+      a: A,
+      d: D,
+    }) as Keys;
 
     // Create sprite animations
     this.createAnimations();
@@ -86,29 +104,31 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
+    const { isInverted, keys } = this;
+    const isBodyBlocked = this.body.blocked.down;
     const acceleration = this.body.blocked.down ? 600 : 200;
     const invertedMultiplier = this.isInverted ? -1 : 1;
 
     // Apply horizontal acceleration when left/a or right/d are applied
-    if (this.cursors.left.isDown) {
+    if (keys.left.isDown || keys.a.isDown) {
       this.setAccelerationX(-acceleration * invertedMultiplier);
       // No need to have a separate set of graphics for running to the left & to the right. Instead
       // we can just mirror the sprite
-      this.setFlipX(this.isInverted ? false : true);
-    } else if (this.cursors.right.isDown) {
+      this.setFlipX(isInverted ? false : true);
+    } else if (keys.right.isDown || keys.d.isDown) {
       this.setAccelerationX(acceleration * invertedMultiplier);
-      this.setFlipX(this.isInverted ? true : false);
+      this.setFlipX(isInverted ? true : false);
     } else {
       this.setAccelerationX(0);
     }
 
     // Only allow the player to jump if they are on the ground
-    if (this.body.blocked.down && this.cursors.up.isDown) {
+    if (isBodyBlocked && (keys.up.isDown || keys.w.isDown)) {
       this.setVelocityY(-500);
     }
 
     // Update the animation/texture based on the state of the player
-    if (this.body.blocked.down) {
+    if (isBodyBlocked) {
       if (this.body.velocity.x !== 0) {
         this.anims.play(Animation.PlayerRun, true);
       } else {
