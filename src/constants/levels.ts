@@ -8,6 +8,7 @@ import invert from '../assets/tilemaps/invert.json';
 import maze from '../assets/tilemaps/maze.json';
 import precise from '../assets/tilemaps/precise.json';
 import restart from '../assets/tilemaps/restart.json';
+import spikes from '../assets/tilemaps/spikes.json';
 import start from '../assets/tilemaps/start.json';
 
 export const levels = [
@@ -31,47 +32,53 @@ export const levels = [
 
   // 4
   {
+    text: 'Watch out for spikes',
+    json: spikes,
+  },
+
+  // 5
+  {
     text: "Don't look down",
     json: down,
   },
 
-  // 5
+  // 6
   {
     text: 'Jump carefully...',
     json: precise,
   },
 
-  // 6
+  // 7
   {
     text: "Something's different",
     json: asymmetrical,
   },
 
-  // 7
+  // 8
   {
     text: 'Go down the rabbit hole',
     json: ant,
   },
 
-  // 8
+  // 9
   {
     text: 'Exit the maze',
     json: maze,
   },
 
-  // 9
+  // 10
   {
     text: 'Face your troubles',
     json: dilbert,
   },
 
-  // 10
+  // 11
   {
     text: "What's with the box?",
     json: box,
   },
 
-  // 11
+  // 12
   {
     text: 'Think carefully...',
     json: challenge,
