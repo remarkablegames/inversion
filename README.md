@@ -6,6 +6,13 @@ The game was made during the [Global Game Jame 2022](https://globalgamejam.org/2
 
 The game was bootstapped from the [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer) template.
 
+## Credit
+
+- [benox3](https://github.com/benox3) - Programmer, Level Designer, Artist
+- [remarkablemark](https://github.com/benox3) - Programmer, Level Designer
+- [mikewesthad](https://github.com/mikewesthad) - [Tilemaps in Phaser 3](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts)
+- [0x72](https://itch.io/profile/0x72) - [16x16 Industrial Tileset](https://0x72.itch.io/16x16-industrial-tileset)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/download/)
