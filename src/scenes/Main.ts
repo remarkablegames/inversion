@@ -108,7 +108,8 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     this.renderText();
-    this.renderLevel(map, this.levelData.level);
+    this.renderLevel(map);
+    this.renderTitle(map);
 
     this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
     this.input.keyboard.on('keydown-R', () => this.scene.restart());
@@ -180,13 +181,34 @@ export default class Main extends Phaser.Scene {
   /**
    * Display level number on the top-right of the screen.
    */
-  private renderLevel(map: Phaser.Tilemaps.Tilemap, level: number) {
+  private renderLevel(map: Phaser.Tilemaps.Tilemap) {
     this.add
-      .text(map.widthInPixels - 112, 32, `Level ${level}`, {
+      .text(map.widthInPixels - 112, 32, `Level ${this.levelData.level}`, {
         font: '18px monospace',
         color: color.white,
       })
       .setScrollFactor(0);
+  }
+
+  /**
+   * Display title in the center of the screen.
+   */
+  private renderTitle(map: Phaser.Tilemaps.Tilemap) {
+    if (this.levelData.level > 1) {
+      return;
+    }
+    [color.white, color.black].forEach((textColor) => {
+      const text = this.add
+        .text(map.widthInPixels / 2, map.heightInPixels / 2, 'INVERSION', {
+          font: '180px Arial',
+          color: textColor,
+        })
+        .setOrigin(0.5)
+        .setScrollFactor(0);
+      if (textColor === color.black) {
+        text.setCrop(0, 0, 495, map.heightInPixels);
+      }
+    });
   }
 
   update() {
