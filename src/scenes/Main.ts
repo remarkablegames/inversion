@@ -96,7 +96,7 @@ export default class Main extends Phaser.Scene {
           tile.getCenterY(),
           key.image.box
         ) as Phaser.Physics.Arcade.Sprite;
-        box.setFriction(1);
+        box.setFriction(1).setTint(color.blueHex);
         this.groundLayer.removeTileAt(tile.x, tile.y);
       }
     });

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { key } from '../constants';
+import { color, key } from '../constants';
 
 enum Animation {
   PlayerIdle = 'player-idle',
@@ -68,7 +68,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   private toggleTint(isTinted: boolean) {
     if (isTinted) {
-      this.setTint(0x01fff1);
+      this.setTint(color.blueHex);
     } else {
       this.clearTint();
     }
