@@ -4,6 +4,7 @@ import box from '../assets/tilemaps/box.json';
 import challenge from '../assets/tilemaps/challenge.json';
 import dilbert from '../assets/tilemaps/dilbert.json';
 import down from '../assets/tilemaps/down.json';
+import maze from '../assets/tilemaps/maze.json';
 import invert from '../assets/tilemaps/invert.json';
 import precise from '../assets/tilemaps/precise.json';
 import restart from '../assets/tilemaps/restart.json';
@@ -54,17 +55,23 @@ export const levels = [
 
   // 8
   {
+    text: 'Exit the maze',
+    json: maze,
+  },
+
+  // 9
+  {
     text: 'Face your troubles',
     json: dilbert,
   },
 
-  // 9
+  // 10
   {
     text: "What's with the box?",
     json: box,
   },
 
-  // 10
+  // 11
   {
     text: 'Think carefully...',
     json: challenge,
