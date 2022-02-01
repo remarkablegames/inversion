@@ -1,8 +1,14 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/remarkablegames/inversion/master/public/screenshot.png" alt="Inversion">
+</p>
+
 # Inversion
 
 <kbd>Inversion</kbd> is a 2D platformer puzzle game where you control two players that have to come together in order to win.
 
 The game was made during the [Global Game Jam 2022](https://globalgamejam.org/2022/games/inversion-7), in which the theme was `duality`. The game was bootstrapped from [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer). Read [blog post](https://remarkablegames.org/posts/inversion/).
+
+[Play the game.](https://remarkablegames.org/inversion/)
 
 ## Credits
 
