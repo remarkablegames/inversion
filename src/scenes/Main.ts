@@ -183,7 +183,7 @@ export default class Main extends Phaser.Scene {
    */
   private renderLevel(map: Phaser.Tilemaps.Tilemap) {
     this.add
-      .text(map.widthInPixels - 112, 32, `Level ${this.levelData.level}`, {
+      .text(map.widthInPixels - 124, 32, `Level ${this.levelData.level}`, {
         font: '18px monospace',
         color: color.white,
       })
