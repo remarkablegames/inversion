@@ -7,6 +7,7 @@ import down from '../assets/tilemaps/down.json';
 import fall from '../assets/tilemaps/fall.json';
 import invert from '../assets/tilemaps/invert.json';
 import maze from '../assets/tilemaps/maze.json';
+import pillars from '../assets/tilemaps/pillars.json';
 import precise from '../assets/tilemaps/precise.json';
 import restart from '../assets/tilemaps/restart.json';
 import spikes from '../assets/tilemaps/spikes.json';
@@ -81,11 +82,17 @@ export const levels = [
 
   // 12
   {
+    text: 'Pillars are your foundation',
+    json: pillars,
+  },
+
+  // 13
+  {
     text: 'Take a leap of faith',
     json: fall,
   },
 
-  // 13
+  // 14
   {
     text: 'Think carefully...',
     json: challenge,
