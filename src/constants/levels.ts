@@ -12,6 +12,7 @@ import precise from '../assets/tilemaps/precise.json';
 import restart from '../assets/tilemaps/restart.json';
 import spikes from '../assets/tilemaps/spikes.json';
 import start from '../assets/tilemaps/start.json';
+import tetris from '../assets/tilemaps/tetris.json';
 
 export const levels = [
   // 1
@@ -22,7 +23,7 @@ export const levels = [
 
   // 2
   {
-    text: 'Press Spacebar to invert player',
+    text: 'Press Spacebar to invert the player',
     json: invert,
   },
 
@@ -76,7 +77,7 @@ export const levels = [
 
   // 11
   {
-    text: "What's with the box?",
+    text: "Don't get boxed in",
     json: box,
   },
 
@@ -93,6 +94,12 @@ export const levels = [
   },
 
   // 14
+  {
+    text: 'How many lines can you clear?',
+    json: tetris,
+  },
+
+  // 15
   {
     text: 'Think carefully...',
     json: challenge,
