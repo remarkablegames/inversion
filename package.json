@@ -5,7 +5,7 @@
   "author": "Mark <mark@remarkablemark.org>",
   "source": "public/index.html",
   "scripts": {
-    "build": "parcel build",
+    "build": "npm run clean && parcel build",
     "clean": "rm -rf .parcel-cache/ dist/",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
