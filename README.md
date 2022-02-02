@@ -8,7 +8,11 @@
 
 The game was made during the [Global Game Jam 2022](https://globalgamejam.org/2022/games/inversion-7), in which the theme was `duality`. The game was bootstrapped from [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer). Read the [blog post](https://remarkablegames.org/posts/inversion/).
 
-[Play the game.](https://remarkablegames.org/inversion/)
+Play the game on:
+
+- [remarkablegames](https://remarkablegames.org/inversion/)
+- [Newgrounds](https://www.newgrounds.com/portal/view/831514)
+- [Itch.io](https://remarkablegames.itch.io/inversion)
 
 ## Credits
 
