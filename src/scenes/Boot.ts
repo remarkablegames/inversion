@@ -4,7 +4,7 @@ import spike from '../assets/images/0x72-industrial-spike.png';
 import box from '../assets/images/box.png';
 import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
 import tiles from '../assets/tilesets/0x72-industrial-tileset-32px-extruded.png';
-import { key } from '../constants';
+import { key, levels } from '../constants';
 
 export default class Boot extends Phaser.Scene {
   constructor() {
@@ -24,6 +24,17 @@ export default class Boot extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start(key.scene.main, { level: 1 });
+    this.scene.start(key.scene.main, {
+      level: this.getLevel(),
+    });
+  }
+
+  private getLevel(): number {
+    const searchParams = new URLSearchParams(location.search);
+    const level = parseInt(searchParams.get('level') || '');
+    if (level < 1 || level > levels.length) {
+      return 1;
+    }
+    return level;
   }
 }
