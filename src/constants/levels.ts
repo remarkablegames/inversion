@@ -5,6 +5,7 @@ import challenge from '../assets/tilemaps/challenge.json';
 import dilbert from '../assets/tilemaps/dilbert.json';
 import down from '../assets/tilemaps/down.json';
 import fall from '../assets/tilemaps/fall.json';
+import gaps from '../assets/tilemaps/gaps.json';
 import invert from '../assets/tilemaps/invert.json';
 import maze from '../assets/tilemaps/maze.json';
 import pillars from '../assets/tilemaps/pillars.json';
@@ -95,11 +96,17 @@ export const levels = [
 
   // 14
   {
+    text: 'Mind the gaps',
+    json: gaps,
+  },
+
+  // 15
+  {
     text: 'How many lines can you clear?',
     json: tetris,
   },
 
-  // 15
+  // 16
   {
     text: 'Think carefully...',
     json: challenge,
