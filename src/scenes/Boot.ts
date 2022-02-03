@@ -32,7 +32,7 @@ export default class Boot extends Phaser.Scene {
   private getLevel(): number {
     const searchParams = new URLSearchParams(location.search);
     const level = parseInt(searchParams.get('level') || '');
-    if (level < 1 || level > levels.length) {
+    if (!level || level < 1 || level > levels.length) {
       return 1;
     }
     return level;
