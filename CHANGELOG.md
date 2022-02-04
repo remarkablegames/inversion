@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/remarkablegames/inversion/compare/v1.0.0...v1.1.0) (2022-02-04)
+
+
+### Features
+
+* **assets:** add level gaps ([937adb8](https://www.github.com/remarkablegames/inversion/commit/937adb8a8672b174e5b7f00d3a1ac070997aefae))
+
 ## 1.0.0 (2022-02-02)
 
 
