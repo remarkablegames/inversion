@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+import { sendEvent } from '../analytics';
 import { color, key, levels } from '../constants';
 import { Player } from '../sprites';
 
@@ -7,6 +8,7 @@ export default class Main extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
   private levelData!: { level: number; json: object; text: string };
+  private levelStartTime!: number;
   private playerA!: Player;
   private playerB!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
@@ -16,24 +18,36 @@ export default class Main extends Phaser.Scene {
     super({ key: key.scene.main });
   }
 
+  /**
+   * Initializes level.
+   */
   init(data: { level: number }) {
     const { level } = data;
     const levelData = levels[level - 1];
-    if (!levelData) {
+    if (levelData) {
+      this.levelData = {
+        ...levelData,
+        level,
+      };
+      sendEvent('level_start', { level });
+      this.levelStartTime = Date.now();
+    } else {
+      // restart at level 1 when there are no more levels
       this.scene.start(key.scene.main, { level: 1 });
-      return;
     }
-    this.levelData = {
-      ...levelData,
-      level,
-    };
   }
 
+  /**
+   * Preloads map.
+   */
   preload() {
     this.tilemapKey = key.tilemap.map + this.levelData.level;
     this.load.tilemapTiledJSON(this.tilemapKey, this.levelData.json);
   }
 
+  /**
+   * Creates game objects.
+   */
   create() {
     this.isPlayerDead = false;
 
@@ -112,13 +126,22 @@ export default class Main extends Phaser.Scene {
     this.renderTitle(map);
 
     this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
-    this.input.keyboard.on('keydown-R', () => this.scene.restart());
+    this.input.keyboard.on('keydown-R', () => {
+      sendEvent('level_start', {
+        level: this.levelData.level,
+        restart: 'input',
+        time: Date.now() - this.levelStartTime,
+      });
+      this.scene.restart();
+    });
   }
 
+  /**
+   * Inverts players.
+   */
   private invertPlayers() {
-    [this.playerA, this.playerB].forEach((player) => {
-      player.toggleInversion();
-    });
+    this.playerA.toggleInversion();
+    this.playerB.toggleInversion();
   }
 
   /**
@@ -150,12 +173,20 @@ export default class Main extends Phaser.Scene {
     );
   }
 
+  /**
+   * Wins and goes to next level when players overlap.
+   */
   private overlapPlayers(playerA: Player, playerB: Player) {
     this.physics.add.overlap(
       playerA,
       playerB,
       () => {
-        this.scene.start(key.scene.main, { level: this.levelData.level + 1 });
+        const { level } = this.levelData;
+        sendEvent('level_end', {
+          level,
+          time: Date.now() - this.levelStartTime,
+        });
+        this.scene.start(key.scene.main, { level: level + 1 });
       },
       undefined,
       this
@@ -163,7 +194,7 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Display text on the top-left of the screen.
+   * Displays text on the top-left of the screen.
    */
   private renderText() {
     const { text } = this.levelData;
@@ -179,7 +210,7 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Display level number on the top-right of the screen.
+   * Displays level number on the top-right of the screen.
    */
   private renderLevel(map: Phaser.Tilemaps.Tilemap) {
     this.add
@@ -191,7 +222,7 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Display title in the center of the screen.
+   * Displays title in the center of the screen.
    */
   private renderTitle(map: Phaser.Tilemaps.Tilemap) {
     if (this.levelData.level > 1) {
@@ -211,6 +242,9 @@ export default class Main extends Phaser.Scene {
     });
   }
 
+  /**
+   * Game loop.
+   */
   update() {
     if (this.isPlayerDead) {
       return;
@@ -238,6 +272,11 @@ export default class Main extends Phaser.Scene {
       this.cameras.main.once('camerafadeoutcomplete', () => {
         this.playerA.destroy();
         this.playerB.destroy();
+        sendEvent('level_start', {
+          level: this.levelData.level,
+          restart: 'dead',
+          time: Date.now() - this.levelStartTime,
+        });
         this.scene.restart();
       });
     }
