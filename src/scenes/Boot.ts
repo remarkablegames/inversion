@@ -18,6 +18,7 @@ export default class Boot extends Phaser.Scene {
       margin: 1,
       spacing: 2,
     });
+
     this.load.image(key.image.box, box);
     this.load.image(key.image.spike, spike);
     this.load.image(key.image.tiles, tiles);

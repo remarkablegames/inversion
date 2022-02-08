@@ -1,14 +1,21 @@
 import Phaser from 'phaser';
 
-import { color, key, levels } from '../constants';
+import * as audio from '../assets/audio';
+import { AudioKey, color, key, levels } from '../constants';
 import { Player } from '../sprites';
 import { sendEvent } from '../utils/analytics';
 
 export default class Main extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
-  private levelData!: { level: number; json: object; text: string };
+  private levelData!: {
+    level: number;
+    json: object;
+    music: AudioKey;
+    text: string;
+  };
   private levelStartTime!: number;
+  private music!: Phaser.Sound.BaseSound;
   private playerA!: Player;
   private playerB!: Player;
   private spikeGroup!: Phaser.Physics.Arcade.StaticGroup;
@@ -24,6 +31,7 @@ export default class Main extends Phaser.Scene {
   init(data: { level: number }) {
     const { level } = data;
     const levelData = levels[level - 1];
+
     if (levelData) {
       this.levelData = {
         ...levelData,
@@ -38,11 +46,15 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Preloads map.
+   * Preloads map and music.
    */
   preload() {
     this.tilemapKey = key.tilemap.map + this.levelData.level;
     this.load.tilemapTiledJSON(this.tilemapKey, this.levelData.json);
+    this.load.audio(
+      key.audio[this.levelData.music],
+      audio[this.levelData.music].href
+    );
   }
 
   /**
@@ -133,6 +145,24 @@ export default class Main extends Phaser.Scene {
         time: Date.now() - this.levelStartTime,
       });
       this.scene.restart();
+    });
+
+    // start music loop
+    if (!this.music) {
+      this.playMusic();
+    }
+  }
+
+  /**
+   * Plays music.
+   */
+  private playMusic() {
+    this.music = this.sound.add(this.levelData.music, {
+      volume: 0.5,
+    });
+    this.music.play();
+    this.music.once('complete', () => {
+      this.playMusic();
     });
   }
 
