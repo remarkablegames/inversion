@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
-import { sendEvent } from '../analytics';
 import { color, key, levels } from '../constants';
 import { Player } from '../sprites';
+import { sendEvent } from '../utils/analytics';
 
 export default class Main extends Phaser.Scene {
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
