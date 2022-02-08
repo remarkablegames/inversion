@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 
-import { color, key, levels } from '../constants';
+import * as audio from '../assets/audio';
+import { AudioKey, color, key, levels } from '../constants';
 import { Player } from '../sprites';
 import { sendEvent } from '../utils/analytics';
 
@@ -10,7 +11,7 @@ export default class Main extends Phaser.Scene {
   private levelData!: {
     level: number;
     json: object;
-    music: string;
+    music: AudioKey;
     text: string;
   };
   private levelStartTime!: number;
@@ -45,11 +46,15 @@ export default class Main extends Phaser.Scene {
   }
 
   /**
-   * Preloads map.
+   * Preloads map and music.
    */
   preload() {
     this.tilemapKey = key.tilemap.map + this.levelData.level;
     this.load.tilemapTiledJSON(this.tilemapKey, this.levelData.json);
+    this.load.audio(
+      key.audio[this.levelData.music],
+      audio[this.levelData.music].href
+    );
   }
 
   /**
