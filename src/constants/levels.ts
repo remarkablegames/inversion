@@ -14,101 +14,118 @@ import restart from '../assets/tilemaps/restart.json';
 import spikes from '../assets/tilemaps/spikes.json';
 import start from '../assets/tilemaps/start.json';
 import tetris from '../assets/tilemaps/tetris.json';
+import { key } from './key';
 
 export const levels = [
   // 1
   {
-    text: 'Arrow/WASD to move & jump',
     json: start,
+    music: key.audio.A1,
+    text: 'Arrow/WASD to move & jump',
   },
 
   // 2
   {
-    text: 'Press Spacebar to invert the player',
     json: invert,
+    music: key.audio.A1,
+    text: 'Press Spacebar to invert the player',
   },
 
   // 3
   {
-    text: 'Press R to restart the level',
     json: restart,
+    music: key.audio.A2,
+    text: 'Press R to restart the level',
   },
 
   // 4
   {
-    text: 'Watch out for spikes',
     json: spikes,
+    music: key.audio.A2,
+    text: 'Watch out for spikes',
   },
 
   // 5
   {
-    text: "Don't look down",
     json: down,
+    music: key.audio.A2,
+    text: "Don't look down",
   },
 
   // 6
   {
-    text: 'Jump carefully...',
     json: precise,
+    music: key.audio.A2,
+    text: 'Jump carefully...',
   },
 
   // 7
   {
-    text: "Something's different",
     json: asymmetrical,
+    music: key.audio.A3,
+    text: "Something's different",
   },
 
   // 8
   {
-    text: 'Go down the rabbit hole',
     json: ant,
+    music: key.audio.A3,
+    text: 'Go down the rabbit hole',
   },
 
   // 9
   {
-    text: 'Exit the maze',
     json: maze,
+    music: key.audio.A4,
+    text: 'Exit the maze',
   },
 
   // 10
   {
-    text: 'Face your troubles',
     json: dilbert,
+    music: key.audio.A5,
+    text: 'Face your troubles',
   },
 
   // 11
   {
-    text: "Don't get boxed in",
     json: box,
+    music: key.audio.A6,
+    text: "Don't get boxed in",
   },
 
   // 12
   {
-    text: 'Pillars are your foundation',
     json: pillars,
+    music: key.audio.A7,
+    text: 'Pillars are your foundation',
   },
 
   // 13
   {
-    text: 'Take a leap of faith',
     json: fall,
+    music: key.audio.A8,
+    text: 'Take a leap of faith',
   },
 
   // 14
   {
-    text: 'Mind the gaps',
     json: gaps,
+    music: key.audio.C1,
+    text: 'Mind the gaps',
   },
 
   // 15
   {
-    text: 'How many lines can you clear?',
     json: tetris,
+    music: key.audio.C2,
+    text: 'How many lines can you clear?',
   },
 
   // 16
   {
-    text: 'Think carefully...',
     json: challenge,
+    music: key.audio.C3,
+    text: 'Think carefully...',
   },
 ] as const;
