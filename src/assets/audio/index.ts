@@ -21,3 +21,5 @@ export const C3 = new URL('./C3.ogg', import.meta.url);
  * Sounds
  */
 export const jump = new URL('./jump.ogg', import.meta.url);
+export const lose = new URL('./lose.ogg', import.meta.url);
+export const win = new URL('./win.ogg', import.meta.url);
