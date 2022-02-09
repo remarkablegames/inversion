@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/remarkablegames/inversion/compare/v1.1.0...v1.2.0) (2022-02-09)
+
+
+### Features
+
+* add music ([e89b262](https://www.github.com/remarkablegames/inversion/commit/e89b2627e98ecd11c77c29ce30a0f31e25a03220))
+* **scenes:** play lose and win sound ([4dfb6f6](https://www.github.com/remarkablegames/inversion/commit/4dfb6f6fef3a2ed11da56659e4b6488b84b56ee7))
+* **sprites:** play jump sound ([06edc44](https://www.github.com/remarkablegames/inversion/commit/06edc44acebdb38f5e2341131697bc337a03f396))
+
+
+### Performance Improvements
+
+* **scenes:** preload music per level in Main instead of in Boot ([97422fd](https://www.github.com/remarkablegames/inversion/commit/97422fd5d2c22b60d1e6d50a6fee4fb01b2f3172))
+
 ## [1.1.0](https://www.github.com/remarkablegames/inversion/compare/v1.0.0...v1.1.0) (2022-02-04)
 
 
