@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+import { jump } from '../assets/audio';
 import spike from '../assets/images/0x72-industrial-spike.png';
 import box from '../assets/images/box.png';
 import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
@@ -22,6 +23,8 @@ export default class Boot extends Phaser.Scene {
     this.load.image(key.image.box, box);
     this.load.image(key.image.spike, spike);
     this.load.image(key.image.tiles, tiles);
+
+    this.load.audio(key.audio.jump, jump.href);
   }
 
   create() {
