@@ -62,10 +62,24 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
+  /**
+   * Stops body movement.
+   */
   freeze() {
     this.body.moves = false;
   }
 
+  /**
+   * Toggles player inversion.
+   */
+  toggleInversion() {
+    this.isInverted = !this.isInverted;
+    this.toggleTint(!this.isInverted);
+  }
+
+  /**
+   * Toggles player tint.
+   */
   private toggleTint(isTinted: boolean) {
     if (isTinted) {
       this.setTint(color.blueHex);
@@ -74,11 +88,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
-  toggleInversion() {
-    this.isInverted = !this.isInverted;
-    this.toggleTint(!this.isInverted);
-  }
-
+  /**
+   * Creates sprite animations.
+   */
   private createAnimations() {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;
@@ -103,6 +115,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
+  /**
+   * Sprite update loop.
+   */
   update() {
     const { isInverted, keys } = this;
     const onGround = this.body.blocked.down || this.body.touching.down;
@@ -125,6 +140,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Only allow the player to jump if they are on the ground
     if (onGround && (keys.up.isDown || keys.w.isDown)) {
       this.setVelocityY(-500);
+      this.scene.sound.play(key.audio.jump, { volume: 0.5 });
     }
 
     // Update the animation/texture based on the state of the player

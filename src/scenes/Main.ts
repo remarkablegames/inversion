@@ -144,6 +144,7 @@ export default class Main extends Phaser.Scene {
         restart: 'input',
         time: Date.now() - this.levelStartTime,
       });
+      this.sound.play(key.audio.win, { rate: 50, volume: 0.5 });
       this.scene.restart();
     });
 
@@ -211,6 +212,7 @@ export default class Main extends Phaser.Scene {
       playerA,
       playerB,
       () => {
+        this.sound.play(key.audio.win, { rate: 3, volume: 0.5 });
         const { level } = this.levelData;
         sendEvent('level_end', {
           level,
@@ -292,6 +294,7 @@ export default class Main extends Phaser.Scene {
       // Flag that the player is dead so that we can stop update from running in the future
       this.isPlayerDead = true;
 
+      this.sound.play(key.audio.lose, { volume: 0.5 });
       this.cameras.main.shake(100, 0.05);
       this.cameras.main.fade(250, 0, 0, 0);
 
