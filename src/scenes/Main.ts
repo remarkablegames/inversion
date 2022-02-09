@@ -171,6 +171,7 @@ export default class Main extends Phaser.Scene {
    * Inverts players.
    */
   private invertPlayers() {
+    this.sound.play(key.audio.win, { rate: 1.5, volume: 0.5 });
     this.playerA.toggleInversion();
     this.playerB.toggleInversion();
   }
