@@ -22,6 +22,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     isInverted: boolean,
+    playerType: 'A' | 'B',
     texture = key.spritesheet.player,
     frame = 0,
   ) {
@@ -49,7 +50,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       .setOffset(7, 9);
 
     // Set player facing direction
-    this.setFlipX(this.isInverted);
+    if (playerType === 'B') {
+      this.setFlipX(true);
+    }
 
     // Set primary player color
     if (!this.isInverted) {
