@@ -28,7 +28,7 @@ export const levels = [
   {
     json: invert,
     music: key.audio.A1,
-    text: 'Press Spacebar to invert the player',
+    text: 'Press Spacebar/I to invert the player',
   },
 
   // 3

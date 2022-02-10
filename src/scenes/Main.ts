@@ -137,7 +137,12 @@ export default class Main extends Phaser.Scene {
     this.renderLevel(map);
     this.renderTitle(map);
 
-    this.input.keyboard.on('keydown-SPACE', this.invertPlayers, this);
+    // invert
+    ['keydown-SPACE', 'keydown-I'].forEach((event) =>
+      this.input.keyboard.on(event, this.invertPlayers, this)
+    );
+
+    // restart
     this.input.keyboard.on('keydown-R', () => {
       sendEvent('level_start', {
         level: this.levelData.level,
@@ -174,6 +179,7 @@ export default class Main extends Phaser.Scene {
     this.sound.play(key.audio.win, { rate: 1.5, volume: 0.5 });
     this.playerA.toggleInversion();
     this.playerB.toggleInversion();
+    sendEvent('invert', { level: this.levelData.level });
   }
 
   /**
@@ -230,16 +236,14 @@ export default class Main extends Phaser.Scene {
    * Displays text on the top-left of the screen.
    */
   private renderText() {
-    const { text } = this.levelData;
-    if (!text) {
-      return;
+    if (this.levelData.text) {
+      this.add
+        .text(32, 32, this.levelData.text, {
+          font: '18px monospace',
+          color: color.black,
+        })
+        .setScrollFactor(0);
     }
-    this.add
-      .text(32, 32, text, {
-        font: '18px monospace',
-        color: color.black,
-      })
-      .setScrollFactor(0);
   }
 
   /**
