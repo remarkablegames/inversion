@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/remarkablegames/inversion/compare/v1.2.0...v1.3.0) (2022-02-10)
+
+
+### Features
+
+* invert player with "I" key ([29aa53b](https://www.github.com/remarkablegames/inversion/commit/29aa53ba5dc30f47fe2502f8938a6e53903ee6cf))
+* reorder levels ([c2c383c](https://www.github.com/remarkablegames/inversion/commit/c2c383c6e99c8c81bba2d2503c8486cd2a977256))
+
 ## [1.2.0](https://www.github.com/remarkablegames/inversion/compare/v1.1.0...v1.2.0) (2022-02-09)
 
 
