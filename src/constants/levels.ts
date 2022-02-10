@@ -110,22 +110,22 @@ export const levels = [
 
   // 14
   {
-    json: gaps,
+    json: challenge,
     music: key.audio.C1,
-    text: 'Mind the gaps',
+    text: 'Think carefully...',
   },
 
   // 15
   {
-    json: tetris,
+    json: gaps,
     music: key.audio.C2,
-    text: 'How many lines can you clear?',
+    text: 'Mind the gaps',
   },
 
   // 16
   {
-    json: challenge,
+    json: tetris,
     music: key.audio.C3,
-    text: 'Think carefully...',
+    text: 'How many lines can you clear?',
   },
 ] as const;
