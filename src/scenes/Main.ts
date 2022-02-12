@@ -163,13 +163,18 @@ export default class Main extends Phaser.Scene {
    * Plays music.
    */
   private playMusic() {
-    this.music = this.sound.add(this.levelData.music, {
-      volume: 0.5,
-    });
-    this.music.play();
-    this.music.once('complete', () => {
-      this.playMusic();
-    });
+    try {
+      this.music = this.sound.add(this.levelData.music, {
+        volume: 0.5,
+      });
+      this.music.play();
+      this.music.once('complete', () => {
+        this.playMusic();
+      });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   }
 
   /**
