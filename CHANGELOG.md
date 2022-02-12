@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://www.github.com/remarkablegames/inversion/compare/v1.3.0...v1.3.1) (2022-02-12)
+
+
+### Bug Fixes
+
+* **scenes:** don't throw error when audio cannot be found in cache ([8956b31](https://www.github.com/remarkablegames/inversion/commit/8956b317380790791d9b730069b9a842ecdc8b1a))
+
 ## [1.3.0](https://www.github.com/remarkablegames/inversion/compare/v1.2.0...v1.3.0) (2022-02-10)
 
 
