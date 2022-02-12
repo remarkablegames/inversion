@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 import * as audio from '../assets/audio';
-import { AudioKey, color, key, levels } from '../constants';
+import { AudioKey, color, key, levels } from '../data';
 import { Player } from '../sprites';
 import { sendEvent } from '../utils/analytics';
 

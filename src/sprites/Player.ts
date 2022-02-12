@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { color, key } from '../constants';
+import { color, key } from '../data';
 
 enum Animation {
   PlayerIdle = 'player-idle',

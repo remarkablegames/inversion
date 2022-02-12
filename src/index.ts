@@ -2,7 +2,7 @@ import './style.css';
 
 import Phaser from 'phaser';
 
-import { color } from './constants';
+import { color } from './data';
 import scenes from './scenes';
 
 const isProduction = process.env.NODE_ENV === 'production';
