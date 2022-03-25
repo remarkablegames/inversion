@@ -13,6 +13,7 @@ Play the game on:
 - [remarkablegames](https://remarkablegames.org/inversion/)
 - [Newgrounds](https://www.newgrounds.com/portal/view/831514)
 - [Itch.io](https://remarkablegames.itch.io/inversion)
+- [Replit](https://replit.com/@remarkablemark/inversion?v=1)
 
 ## Credits
 
