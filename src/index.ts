@@ -1,5 +1,3 @@
-import './style.css';
-
 import Phaser from 'phaser';
 
 import { color } from './data';
