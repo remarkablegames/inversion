@@ -31,6 +31,7 @@ export default class Boot extends Phaser.Scene {
 
   create() {
     this.scene.start(key.scene.main, {
+      activePlayer: 'A',
       level: this.getLevel(),
     });
   }
