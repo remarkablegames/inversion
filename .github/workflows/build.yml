@@ -18,7 +18,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --prefer-offline
 
       - name: Lint commit message
         run: npx commitlint --from=HEAD~1
@@ -33,7 +33,6 @@ jobs:
         run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Build
-        # run: npm run build -- --public-url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: npm run build -- --public-url https://remarkablegames.org/${{ github.event.repository.name }}
 
       - name: Deploy
