@@ -77,9 +77,9 @@ export default class Main extends Phaser.Scene {
     const tiles = map.addTilesetImage(
       '0x72-industrial-tileset-32px-extruded',
       key.image.tiles
-    );
+    )!;
 
-    this.groundLayer = map.createLayer('Ground', tiles);
+    this.groundLayer = map.createLayer('Ground', tiles)!;
     this.spawnPlayers(map);
     this.overlapPlayers(this.playerA, this.playerB);
 
@@ -105,12 +105,13 @@ export default class Main extends Phaser.Scene {
 
         // The map has spikes rotated in Tiled (z key), so parse out that angle to the correct body placement
         spike.rotation = tile.rotation;
+        const spikeBody = spike.body!;
         if (spike.angle === 0) {
-          spike.body.setSize(32, 6).setOffset(0, 26);
+          spikeBody.setSize(32, 6).setOffset(0, 26);
         } else if (spike.angle === -90) {
-          spike.body.setSize(6, 32).setOffset(26, 0);
+          spikeBody.setSize(6, 32).setOffset(26, 0);
         } else if (spike.angle === 90) {
-          spike.body.setSize(6, 32).setOffset(0, 0);
+          spikeBody.setSize(6, 32).setOffset(0, 0);
         }
 
         this.groundLayer.removeTileAt(tile.x, tile.y);
@@ -137,13 +138,15 @@ export default class Main extends Phaser.Scene {
     this.renderLevel(map);
     this.renderTitle(map);
 
+    const inputKeyboard = this.input.keyboard!;
+
     // invert
     ['keydown-SPACE', 'keydown-I'].forEach((event) =>
-      this.input.keyboard.on(event, this.invertPlayers, this)
+      inputKeyboard.on(event, this.invertPlayers, this)
     );
 
     // restart
-    this.input.keyboard.on('keydown-R', () => {
+    inputKeyboard.on('keydown-R', () => {
       sendEvent('level_start', {
         level: this.levelData.level,
         restart: 'input',

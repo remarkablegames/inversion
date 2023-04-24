@@ -35,7 +35,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Track the arrow keys & WASD
     const { UP, LEFT, RIGHT, W, A, D } = Phaser.Input.Keyboard.KeyCodes;
-    this.keys = scene.input.keyboard.addKeys({
+    this.keys = scene.input.keyboard!.addKeys({
       up: UP,
       left: LEFT,
       right: RIGHT,

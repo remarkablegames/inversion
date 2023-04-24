@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
       - name: Type check
-        run: npm run tsc
+        run: npm run lint:tsc
 
       - name: Read package version
         run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
