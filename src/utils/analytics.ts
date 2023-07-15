@@ -16,7 +16,7 @@ type EventName =
  */
 export function sendEvent(
   eventName: EventName,
-  eventParams?: Record<string, string | number>
+  eventParams?: Record<string, string | number>,
 ) {
   gtag('event', eventName, eventParams);
 }

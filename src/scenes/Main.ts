@@ -53,7 +53,7 @@ export default class Main extends Phaser.Scene {
     this.load.tilemapTiledJSON(this.tilemapKey, this.levelData.json);
     this.load.audio(
       key.audio[this.levelData.music],
-      audio[this.levelData.music].href
+      audio[this.levelData.music].href,
     );
   }
 
@@ -71,12 +71,12 @@ export default class Main extends Phaser.Scene {
       0,
       map.widthInPixels,
       map.heightInPixels * 2,
-      color.whiteHex
+      color.whiteHex,
     );
 
     const tiles = map.addTilesetImage(
       '0x72-industrial-tileset-32px-extruded',
-      key.image.tiles
+      key.image.tiles,
     )!;
 
     this.groundLayer = map.createLayer('Ground', tiles)!;
@@ -99,7 +99,7 @@ export default class Main extends Phaser.Scene {
         const spike = this.spikeGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),
-          key.image.spike
+          key.image.spike,
         ) as Phaser.Physics.Arcade.Sprite;
         spike.setTint(color.redHex);
 
@@ -121,7 +121,7 @@ export default class Main extends Phaser.Scene {
         const box = boxGroup.create(
           tile.getCenterX(),
           tile.getCenterY(),
-          key.image.box
+          key.image.box,
         ) as Phaser.Physics.Arcade.Sprite;
         box.setFriction(1).setTint(color.blueHex);
         this.groundLayer.removeTileAt(tile.x, tile.y);
@@ -129,7 +129,7 @@ export default class Main extends Phaser.Scene {
     });
 
     [this.playerA, this.playerB, boxGroup, this.groundLayer].forEach((object) =>
-      this.physics.world.addCollider(object, boxGroup)
+      this.physics.world.addCollider(object, boxGroup),
     );
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -142,7 +142,7 @@ export default class Main extends Phaser.Scene {
 
     // invert
     ['keydown-SPACE', 'keydown-I'].forEach((event) =>
-      inputKeyboard.on(event, this.invertPlayers, this)
+      inputKeyboard.on(event, this.invertPlayers, this),
     );
 
     // restart
@@ -196,26 +196,26 @@ export default class Main extends Phaser.Scene {
   private spawnPlayers(map: Phaser.Tilemaps.Tilemap) {
     const spawnPointA = map.findObject(
       'Objects',
-      (object) => object.name === 'SpawnA'
+      (object) => object.name === 'SpawnA',
     );
 
     const spawnPointB = map.findObject(
       'Objects',
-      (object) => object.name === 'SpawnB'
+      (object) => object.name === 'SpawnB',
     );
 
     this.playerA = new Player(
       this,
       spawnPointA?.x || 0,
       spawnPointA?.y || 0,
-      false
+      false,
     );
 
     this.playerB = new Player(
       this,
       spawnPointB?.x || 0,
       spawnPointB?.y || 0,
-      true // inverted
+      true, // inverted
     );
   }
 
@@ -236,7 +236,7 @@ export default class Main extends Phaser.Scene {
         this.scene.start(key.scene.main, { level: level + 1 });
       },
       undefined,
-      this
+      this,
     );
   }
 
