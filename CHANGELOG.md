@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.2 (2023-11-03)
+
+
+### Bug Fixes
+
+* **public:** fix gtag is not defined ([19d4a57](https://github.com/remarkablegames/inversion/commit/19d4a572c81c22baf8dc8409324d2c7cd0728abb))
+
+
+### Miscellaneous Chores
+
+* release 1.3.2 ([b0fb470](https://github.com/remarkablegames/inversion/commit/b0fb470dc9824e0a685cfdc9190f6aae57d9450e))
+
 ## [1.3.1](https://www.github.com/remarkablegames/inversion/compare/v1.3.0...v1.3.1) (2022-02-12)
 
 ### Bug Fixes
