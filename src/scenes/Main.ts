@@ -177,7 +177,6 @@ export default class Main extends Phaser.Scene {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
-      this.playMusic();
     }
   }
 
