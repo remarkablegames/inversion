@@ -3,8 +3,8 @@ import Phaser from 'phaser';
 import { color, key } from '../data';
 
 enum Animation {
-  PlayerIdle = 'player-idle',
-  PlayerRun = 'player-run',
+  Idle = 'Idle',
+  Run = 'Run',
 }
 
 interface Keys {
@@ -95,7 +95,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;
     anims.create({
-      key: Animation.PlayerIdle,
+      key: Animation.Idle,
       frames: anims.generateFrameNumbers(key.spritesheet.player, {
         start: 0,
         end: 3,
@@ -105,7 +105,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
 
     anims.create({
-      key: Animation.PlayerRun,
+      key: Animation.Run,
       frames: anims.generateFrameNumbers(key.spritesheet.player, {
         start: 8,
         end: 15,
@@ -146,9 +146,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Update the animation/texture based on the state of the player
     if (onGround) {
       if (this.body.velocity.x !== 0) {
-        this.anims.play(Animation.PlayerRun, true);
+        this.anims.play(Animation.Run, true);
       } else {
-        this.anims.play(Animation.PlayerIdle, true);
+        this.anims.play(Animation.Idle, true);
       }
     } else {
       this.anims.stop();
