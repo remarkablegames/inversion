@@ -9,6 +9,18 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    groups:
+      parcel:
+        patterns:
+          - parcel
+          - '@parcel/*'
+      prettier:
+        patterns:
+          - prettier
+          - eslint-plugin-prettier
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
