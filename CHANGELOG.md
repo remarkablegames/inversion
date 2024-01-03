@@ -1,16 +1,21 @@
 # Changelog
 
-## 1.3.2 (2023-11-03)
-
+## [1.3.3](https://github.com/remarkablegames/inversion/compare/v1.3.2...v1.3.3) (2024-01-03)
 
 ### Bug Fixes
 
-* **public:** fix gtag is not defined ([19d4a57](https://github.com/remarkablegames/inversion/commit/19d4a572c81c22baf8dc8409324d2c7cd0728abb))
+- **scenes:** set timeout on play music to prevent race condition ([0990095](https://github.com/remarkablegames/inversion/commit/099009533d56f522f7e8d5d6ae2e94bc2031b1ea))
+- **sprites:** fix "AnimationManager key already exists" in Player ([8819d65](https://github.com/remarkablegames/inversion/commit/8819d6554218bfdd7aeb008343a3195067bb87a2))
 
+## [1.3.2](https://github.com/remarkablegames/inversion/compare/v1.3.1...v1.3.2) (2023-11-03)
+
+### Bug Fixes
+
+- **public:** fix gtag is not defined ([19d4a57](https://github.com/remarkablegames/inversion/commit/19d4a572c81c22baf8dc8409324d2c7cd0728abb))
 
 ### Miscellaneous Chores
 
-* release 1.3.2 ([b0fb470](https://github.com/remarkablegames/inversion/commit/b0fb470dc9824e0a685cfdc9190f6aae57d9450e))
+- release 1.3.2 ([b0fb470](https://github.com/remarkablegames/inversion/commit/b0fb470dc9824e0a685cfdc9190f6aae57d9450e))
 
 ## [1.3.1](https://www.github.com/remarkablegames/inversion/compare/v1.3.0...v1.3.1) (2022-02-12)
 
