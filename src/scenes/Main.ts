@@ -55,6 +55,7 @@ export default class Main extends Phaser.Scene {
       key.audio[this.levelData.music],
       audio[this.levelData.music].href,
     );
+    this.load.start();
   }
 
   /**
