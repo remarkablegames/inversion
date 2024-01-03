@@ -55,7 +55,6 @@ export default class Main extends Phaser.Scene {
       key.audio[this.levelData.music],
       audio[this.levelData.music].href,
     );
-    this.load.start();
   }
 
   /**
@@ -167,6 +166,13 @@ export default class Main extends Phaser.Scene {
    * Plays music.
    */
   private playMusic() {
+    if (this.load.progress !== 1) {
+      setTimeout(() => {
+        this.playMusic();
+      }, 150);
+      return;
+    }
+
     try {
       this.music = this.sound.add(this.levelData.music, {
         volume: 0.5,
