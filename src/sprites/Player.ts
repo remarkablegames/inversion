@@ -94,25 +94,30 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   private createAnimations() {
     // Create the animations we need from the player spritesheet
     const anims = this.scene.anims;
-    anims.create({
-      key: Animation.Idle,
-      frames: anims.generateFrameNumbers(key.spritesheet.player, {
-        start: 0,
-        end: 3,
-      }),
-      frameRate: 3,
-      repeat: -1,
-    });
 
-    anims.create({
-      key: Animation.Run,
-      frames: anims.generateFrameNumbers(key.spritesheet.player, {
-        start: 8,
-        end: 15,
-      }),
-      frameRate: 12,
-      repeat: -1,
-    });
+    if (!anims.exists(Animation.Idle)) {
+      anims.create({
+        key: Animation.Idle,
+        frames: anims.generateFrameNumbers(key.spritesheet.player, {
+          start: 0,
+          end: 3,
+        }),
+        frameRate: 3,
+        repeat: -1,
+      });
+    }
+
+    if (!anims.exists(Animation.Run)) {
+      anims.create({
+        key: Animation.Run,
+        frames: anims.generateFrameNumbers(key.spritesheet.player, {
+          start: 8,
+          end: 15,
+        }),
+        frameRate: 12,
+        repeat: -1,
+      });
+    }
   }
 
   /**
