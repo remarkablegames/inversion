@@ -7,22 +7,28 @@ enum Animation {
   Run = 'Run',
 }
 
-interface Keys {
-  up: Phaser.Input.Keyboard.Key;
-  left: Phaser.Input.Keyboard.Key;
-  right: Phaser.Input.Keyboard.Key;
-  w: Phaser.Input.Keyboard.Key;
-  a: Phaser.Input.Keyboard.Key;
-  d: Phaser.Input.Keyboard.Key;
-}
+type Cursors = Record<
+  'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right',
+  Phaser.Input.Keyboard.Key
+>;
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
-  private keys: Keys;
+  private cursors: Cursors;
   private isInverted: boolean;
 
-  constructor(scene: Phaser.Scene, x: number, y: number, isInverted: boolean) {
-    super(scene, x, y, key.spritesheet.player);
+  constructor(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    isInverted: boolean,
+    texture = key.spritesheet.player,
+    frame = 0,
+  ) {
+    super(scene, x, y, texture, frame);
+
+    // Add cursor keys
+    this.cursors = this.createCursorKeys();
 
     // Primary player is set to false
     this.isInverted = isInverted;
@@ -32,17 +38,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Enable physics for the sprite
     scene.physics.world.enable(this);
-
-    // Track the arrow keys & WASD
-    const { UP, LEFT, RIGHT, W, A, D } = Phaser.Input.Keyboard.KeyCodes;
-    this.keys = scene.input.keyboard!.addKeys({
-      up: UP,
-      left: LEFT,
-      right: RIGHT,
-      w: W,
-      a: A,
-      d: D,
-    }) as Keys;
 
     // Create sprite animations
     this.createAnimations();
@@ -89,6 +84,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   /**
+   * Track the arrow keys & WASD.
+   */
+  private createCursorKeys() {
+    return this.scene.input.keyboard!.addKeys(
+      'w,a,s,d,up,left,down,right',
+    ) as Cursors;
+  }
+
+  /**
    * Creates sprite animations.
    */
   private createAnimations() {
@@ -124,18 +128,18 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
    * Sprite update loop.
    */
   update() {
-    const { isInverted, keys } = this;
+    const { isInverted, cursors } = this;
     const onGround = this.body.blocked.down || this.body.touching.down;
     const acceleration = onGround ? 600 : 150;
     const invertedMultiplier = this.isInverted ? -1 : 1;
 
     // Apply horizontal acceleration when left/a or right/d are applied
-    if (keys.left.isDown || keys.a.isDown) {
+    if (cursors.left.isDown || cursors.a.isDown) {
       this.setAccelerationX(-acceleration * invertedMultiplier);
-      // No need to have a separate set of graphics for running to the left & to the right. Instead
-      // we can just mirror the sprite
+      // No need to have a separate set of graphics for running to the left & to the right.
+      // Instead we can just mirror the sprite
       this.setFlipX(isInverted ? false : true);
-    } else if (keys.right.isDown || keys.d.isDown) {
+    } else if (cursors.right.isDown || cursors.d.isDown) {
       this.setAccelerationX(acceleration * invertedMultiplier);
       this.setFlipX(isInverted ? true : false);
     } else {
@@ -143,7 +147,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Only allow the player to jump if they are on the ground
-    if (onGround && (keys.up.isDown || keys.w.isDown)) {
+    if (onGround && (cursors.up.isDown || cursors.w.isDown)) {
       this.setVelocityY(-500);
       this.scene.sound.play(key.audio.jump, { volume: 0.5 });
     }
