@@ -6,6 +6,7 @@ import box from '../assets/images/box.png';
 import player from '../assets/spritesheets/0x72-industrial-player-32px-extruded.png';
 import tiles from '../assets/tilesets/0x72-industrial-tileset-32px-extruded.png';
 import { key, levels } from '../data';
+import { PlayerType } from '../sprites';
 
 export default class Boot extends Phaser.Scene {
   constructor() {
@@ -31,6 +32,7 @@ export default class Boot extends Phaser.Scene {
 
   create() {
     this.scene.start(key.scene.main, {
+      activePlayer: PlayerType.A,
       level: this.getLevel(),
     });
   }

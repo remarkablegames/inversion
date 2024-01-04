@@ -2,10 +2,11 @@ import Phaser from 'phaser';
 
 import * as audio from '../assets/audio';
 import { AudioKey, color, key, levels } from '../data';
-import { Player } from '../sprites';
+import { Player, PlayerType } from '../sprites';
 import { sendEvent } from '../utils/analytics';
 
 export default class Main extends Phaser.Scene {
+  private activePlayer: PlayerType = PlayerType.A;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
   private levelData!: {
@@ -28,9 +29,10 @@ export default class Main extends Phaser.Scene {
   /**
    * Initializes level.
    */
-  init(data: { level: number }) {
+  init(data: { level: number; activePlayer: PlayerType }) {
     const { level } = data;
     const levelData = levels[level - 1];
+    this.activePlayer = data.activePlayer;
 
     if (levelData) {
       this.levelData = {
@@ -41,7 +43,10 @@ export default class Main extends Phaser.Scene {
       this.levelStartTime = Date.now();
     } else {
       // restart at level 1 when there are no more levels
-      this.scene.start(key.scene.main, { level: 1 });
+      this.scene.start(key.scene.main, {
+        activePlayer: this.activePlayer,
+        level: 1,
+      });
     }
   }
 
@@ -153,7 +158,10 @@ export default class Main extends Phaser.Scene {
         time: Date.now() - this.levelStartTime,
       });
       this.sound.play(key.audio.win, { rate: 50, volume: 0.5 });
-      this.scene.restart();
+      this.scene.restart({
+        activePlayer: this.activePlayer,
+        level: this.levelData.level,
+      });
     });
 
     // start music loop
@@ -191,6 +199,8 @@ export default class Main extends Phaser.Scene {
    * Inverts players.
    */
   private invertPlayers() {
+    this.activePlayer =
+      this.activePlayer === PlayerType.A ? PlayerType.B : PlayerType.A;
     this.sound.play(key.audio.win, { rate: 1.5, volume: 0.5 });
     this.playerA.toggleInversion();
     this.playerB.toggleInversion();
@@ -201,29 +211,20 @@ export default class Main extends Phaser.Scene {
    * Instantiate player instances at the location of the spawn point object in the Tiled map.
    */
   private spawnPlayers(map: Phaser.Tilemaps.Tilemap) {
-    const spawnPointA = map.findObject(
-      'Objects',
-      (object) => object.name === 'SpawnA',
-    );
+    Object.values(PlayerType).forEach((playerType) => {
+      const spawnPoint = map.findObject(
+        'Objects',
+        (object) => object.name === `Spawn${playerType}`,
+      );
 
-    const spawnPointB = map.findObject(
-      'Objects',
-      (object) => object.name === 'SpawnB',
-    );
-
-    this.playerA = new Player(
-      this,
-      spawnPointA?.x || 0,
-      spawnPointA?.y || 0,
-      false,
-    );
-
-    this.playerB = new Player(
-      this,
-      spawnPointB?.x || 0,
-      spawnPointB?.y || 0,
-      true, // inverted
-    );
+      this[`player${playerType}` as 'playerA' | 'playerB'] = new Player(
+        this,
+        spawnPoint?.x || 0,
+        spawnPoint?.y || 0,
+        this.activePlayer !== playerType, // inverted
+        playerType,
+      );
+    });
   }
 
   /**
@@ -240,7 +241,10 @@ export default class Main extends Phaser.Scene {
           level,
           time: Date.now() - this.levelStartTime,
         });
-        this.scene.start(key.scene.main, { level: level + 1 });
+        this.scene.start(key.scene.main, {
+          activePlayer: this.activePlayer,
+          level: level + 1,
+        });
       },
       undefined,
       this,
@@ -325,12 +329,17 @@ export default class Main extends Phaser.Scene {
       this.cameras.main.once('camerafadeoutcomplete', () => {
         this.playerA.destroy();
         this.playerB.destroy();
+
+        this.scene.restart({
+          activePlayer: this.activePlayer,
+          level: this.levelData.level,
+        });
+
         sendEvent('level_start', {
           level: this.levelData.level,
           restart: 'dead',
           time: Date.now() - this.levelStartTime,
         });
-        this.scene.restart();
       });
     }
   }
