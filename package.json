@@ -18,7 +18,7 @@
     "phaser": "3.70.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.4.3",
+    "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.3",
     "@parcel/packager-raw-url": "^2.11.0",
     "@parcel/transformer-webmanifest": "^2.11.0",
