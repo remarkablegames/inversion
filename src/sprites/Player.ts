@@ -12,7 +12,12 @@ type Cursors = Record<
   Phaser.Input.Keyboard.Key
 >;
 
-export default class Player extends Phaser.Physics.Arcade.Sprite {
+export enum PlayerType {
+  'A' = 'A',
+  'B' = 'B',
+}
+
+export class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
   private cursors: Cursors;
   private isInverted: boolean;
@@ -22,7 +27,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     isInverted: boolean,
-    playerType: 'A' | 'B',
+    playerType: PlayerType,
     texture = key.spritesheet.player,
     frame = 0,
   ) {
@@ -50,7 +55,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       .setOffset(7, 9);
 
     // Set player facing direction
-    if (playerType === 'B') {
+    if (playerType === PlayerType.B) {
       this.setFlipX(true);
     }
 

@@ -2,11 +2,11 @@ import Phaser from 'phaser';
 
 import * as audio from '../assets/audio';
 import { AudioKey, color, key, levels } from '../data';
-import { Player } from '../sprites';
+import { Player, PlayerType } from '../sprites';
 import { sendEvent } from '../utils/analytics';
 
 export default class Main extends Phaser.Scene {
-  private activePlayer: 'A' | 'B' = 'A';
+  private activePlayer: PlayerType = PlayerType.A;
   private groundLayer!: Phaser.Tilemaps.TilemapLayer;
   private isPlayerDead!: boolean;
   private levelData!: {
@@ -29,7 +29,7 @@ export default class Main extends Phaser.Scene {
   /**
    * Initializes level.
    */
-  init(data: { level: number; activePlayer: 'A' | 'B' }) {
+  init(data: { level: number; activePlayer: PlayerType }) {
     const { level } = data;
     const levelData = levels[level - 1];
     this.activePlayer = data.activePlayer;
@@ -44,7 +44,7 @@ export default class Main extends Phaser.Scene {
     } else {
       // restart at level 1 when there are no more levels
       this.scene.start(key.scene.main, {
-        activePlayer: 'A',
+        activePlayer: this.activePlayer,
         level: 1,
       });
     }
@@ -199,7 +199,8 @@ export default class Main extends Phaser.Scene {
    * Inverts players.
    */
   private invertPlayers() {
-    this.activePlayer = this.activePlayer === 'A' ? 'B' : 'A';
+    this.activePlayer =
+      this.activePlayer === PlayerType.A ? PlayerType.B : PlayerType.A;
     this.sound.play(key.audio.win, { rate: 1.5, volume: 0.5 });
     this.playerA.toggleInversion();
     this.playerB.toggleInversion();
@@ -210,7 +211,7 @@ export default class Main extends Phaser.Scene {
    * Instantiate player instances at the location of the spawn point object in the Tiled map.
    */
   private spawnPlayers(map: Phaser.Tilemaps.Tilemap) {
-    (['A', 'B'] as const).forEach((playerType) => {
+    Object.values(PlayerType).forEach((playerType) => {
       const spawnPoint = map.findObject(
         'Objects',
         (object) => object.name === `Spawn${playerType}`,
@@ -241,7 +242,7 @@ export default class Main extends Phaser.Scene {
           time: Date.now() - this.levelStartTime,
         });
         this.scene.start(key.scene.main, {
-          activePlayer: 'A',
+          activePlayer: this.activePlayer,
           level: level + 1,
         });
       },
