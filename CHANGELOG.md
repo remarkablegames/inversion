@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/remarkablegames/inversion/compare/v1.3.3...v1.4.0) (2024-01-04)
+
+
+### Features
+
+* keep inverted player state after level change ([8703b46](https://github.com/remarkablegames/inversion/commit/8703b46a0753d2c667f3e63f599ca3f358427ab7))
+* keep inverted player state after level restart ([f4d2b1e](https://github.com/remarkablegames/inversion/commit/f4d2b1efd0d73634df469b09b702ab92959d8ffc))
+
 ## [1.3.3](https://github.com/remarkablegames/inversion/compare/v1.3.2...v1.3.3) (2024-01-03)
 
 ### Bug Fixes
