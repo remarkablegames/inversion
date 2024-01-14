@@ -83,13 +83,17 @@ Replace absolute URLs with relative URLs:
 sed -i '' -e 's|src="/|src="|g' -e 's|href="/|href="|g' dist/index.html
 ```
 
-Zip the game artifacts (replace `<version>` with the semver):
+Zip the game artifacts:
 
 ```sh
-zip -r inversion-<version>.zip dist
+zip -r "inversion-$(npm view . version).zip" dist
 ```
 
-Upload the zip archive to the game platform.
+Upload the zip archive to the game platform:
+
+```sh
+open dist
+```
 
 ## License
 
