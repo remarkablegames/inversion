@@ -6,7 +6,7 @@
 
 <kbd>Inversion</kbd> is a 2D platformer puzzle game where two players must come together to win.
 
-This game was made during the [Global Game Jam 2022](https://globalgamejam.org/2022/games/inversion-7), in which the theme was `duality`. The game was bootstrapped from [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer). Read the [blog post](https://remarkablegames.org/posts/inversion/).
+This game was made for the [Global Game Jam 2022](https://globalgamejam.org/2022/games/inversion-7), in which the theme was `duality`. The game was bootstrapped from [`phaser-platformer`](https://github.com/remarkablegames/phaser-platformer). Read the [blog post](https://remarkablegames.org/posts/inversion/).
 
 Play the game on:
 
@@ -25,7 +25,7 @@ Play the game on:
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/download/)
+- [nvm](https://github.com/nvm-sh/nvm#readme)
 - [Tiled](https://www.mapeditor.org/)
 
 ## Install
@@ -35,6 +35,12 @@ Clone the repository:
 ```sh
 git clone https://github.com/remarkablegames/inversion.git
 cd inversion
+```
+
+Use the Node.js version:
+
+```sh
+nvm use
 ```
 
 Install the dependencies:
