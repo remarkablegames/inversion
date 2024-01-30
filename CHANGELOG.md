@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/remarkablegames/inversion/compare/v1.4.0...v1.4.1) (2024-01-30)
+
+
+### Bug Fixes
+
+* **public:** add og:image ([1c0b1bc](https://github.com/remarkablegames/inversion/commit/1c0b1bc37fe0054a39ee729998561e06588a003b))
+
 ## [1.4.0](https://github.com/remarkablegames/inversion/compare/v1.3.3...v1.4.0) (2024-01-04)
 
 
