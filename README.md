@@ -4,7 +4,7 @@
 
 # Inversion
 
-![GitHub Release](https://img.shields.io/github/v/release/remarkablegames/inversion)
+![release](https://img.shields.io/github/v/release/remarkablegames/inversion)
 [![build](https://github.com/remarkablegames/inversion/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/inversion/actions/workflows/build.yml)
 
 <kbd>Inversion</kbd> is a 2D platformer puzzle game where two players must come together to win.
