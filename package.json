@@ -6,6 +6,7 @@
   "source": "public/index.html",
   "scripts": {
     "build": "npm run clean && parcel build",
+    "bundle": "scripts/bundle.sh",
     "clean": "rm -rf .parcel-cache/ dist/",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
