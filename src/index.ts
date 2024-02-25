@@ -19,6 +19,7 @@ new Phaser.Game({
     default: 'arcade',
     arcade: {
       gravity: {
+        x: 0,
         y: 1150,
       },
       debug: !isProduction,
