@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/remarkablegames/inversion/compare/v1.4.1...v1.4.2) (2024-02-25)
+
+
+### Build System
+
+* add bundle script ([6e8fa92](https://github.com/remarkablegames/inversion/commit/6e8fa9251c05830411ea77a462f434c6a58df546))
+
 ## [1.4.1](https://github.com/remarkablegames/inversion/compare/v1.4.0...v1.4.1) (2024-01-30)
 
 
