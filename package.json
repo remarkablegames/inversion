@@ -37,7 +37,7 @@
     "parcel": "^2.13.0",
     "prettier": "^3.3.3",
     "process": "^0.11.10",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "private": true,
   "license": "MIT"
