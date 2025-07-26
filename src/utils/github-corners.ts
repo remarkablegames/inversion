@@ -3,7 +3,7 @@
  *
  * @see https://github.com/remarkablemark/github-corners
  */
-if (process.env.BUNDLE !== 'true') {
+if (import.meta.env.VITE_BUNDLE !== 'true') {
   const script = document.createElement('script');
 
   script.src = 'https://unpkg.com/github-corners/dist/embed.min.js';

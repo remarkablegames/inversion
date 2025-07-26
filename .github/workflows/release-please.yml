@@ -44,6 +44,8 @@ jobs:
 
       - name: Build
         run: npm run bundle
+        env:
+          VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
       - name: Setup butler
         uses: remarkablegames/setup-butler@v1
@@ -52,3 +54,8 @@ jobs:
         run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VERSION }}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+
+      - name: Upload Release Artifact
+        run: gh release upload ${{ needs.release.outputs.tag_name }} dist/${{ github.event.repository.name }}-${{ env.VERSION }}.zip
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

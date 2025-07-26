@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="favicon.ico" />
@@ -35,7 +35,7 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script>
-      window['ga-disable-UA-59233605-5'] = 'production' !== '<%= NODE_ENV %>';
+      window['ga-disable-UA-59233605-5'] = %DEV%;
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () {
         dataLayer.push(arguments);
@@ -48,7 +48,7 @@
       src="https://www.googletagmanager.com/gtag/js?id=UA-59233605-5"
     ></script>
 
-    <script type="module" src="../src/index.ts"></script>
-    <script type="module" src="../src/utils/github-corners.ts"></script>
+    <script type="module" src="src/index.ts"></script>
+    <script type="module" src="src/utils/github-corners.ts"></script>
   </body>
 </html>

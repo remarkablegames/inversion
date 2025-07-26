@@ -3,8 +3,6 @@ import Phaser from 'phaser';
 import { color } from './data';
 import scenes from './scenes';
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 /**
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
  */
@@ -13,7 +11,7 @@ new Phaser.Game({
   height: 640, // 32px * 20 tiles
   title: 'Inversion',
   url: 'https://remarkablegames.org/inversion/',
-  version: process.env.VERSION,
+  version: import.meta.env.VITE_APP_VERSION,
   scene: scenes,
   physics: {
     default: 'arcade',
@@ -22,10 +20,10 @@ new Phaser.Game({
         x: 0,
         y: 1150,
       },
-      debug: !isProduction,
+      debug: import.meta.env.DEV,
     },
   },
-  disableContextMenu: isProduction,
+  disableContextMenu: import.meta.env.PROD,
   backgroundColor: color.black,
   scale: {
     mode: Phaser.Scale.FIT,
