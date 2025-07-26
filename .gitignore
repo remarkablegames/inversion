@@ -5,9 +5,9 @@
 /.pnp
 .pnp.js
 
-# parcel
+# vite
 /dist
-/.parcel-cache
+.env.local
 
 # misc
 *.swp

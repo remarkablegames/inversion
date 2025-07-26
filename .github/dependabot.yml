@@ -16,10 +16,6 @@ updates:
       eslint:
         patterns:
           - '@eslint/*'
-      parcel:
-        patterns:
-          - parcel
-          - '@parcel/*'
       prettier:
         patterns:
           - prettier
