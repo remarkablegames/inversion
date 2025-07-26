@@ -1,26 +1,29 @@
 # Changelog
 
-## [1.4.2](https://github.com/remarkablegames/inversion/compare/v1.4.1...v1.4.2) (2024-02-25)
+## [1.4.3](https://github.com/remarkablegames/inversion/compare/v1.4.2...v1.4.3) (2025-07-26)
 
+### Miscellaneous Chores
+
+- release 1.4.3 ([b17a064](https://github.com/remarkablegames/inversion/commit/b17a064f069edfe6ddf6fd1954f933ac77fd596d))
+
+## [1.4.2](https://github.com/remarkablegames/inversion/compare/v1.4.1...v1.4.2) (2024-02-25)
 
 ### Build System
 
-* add bundle script ([6e8fa92](https://github.com/remarkablegames/inversion/commit/6e8fa9251c05830411ea77a462f434c6a58df546))
+- add bundle script ([6e8fa92](https://github.com/remarkablegames/inversion/commit/6e8fa9251c05830411ea77a462f434c6a58df546))
 
 ## [1.4.1](https://github.com/remarkablegames/inversion/compare/v1.4.0...v1.4.1) (2024-01-30)
 
-
 ### Bug Fixes
 
-* **public:** add og:image ([1c0b1bc](https://github.com/remarkablegames/inversion/commit/1c0b1bc37fe0054a39ee729998561e06588a003b))
+- **public:** add og:image ([1c0b1bc](https://github.com/remarkablegames/inversion/commit/1c0b1bc37fe0054a39ee729998561e06588a003b))
 
 ## [1.4.0](https://github.com/remarkablegames/inversion/compare/v1.3.3...v1.4.0) (2024-01-04)
 
-
 ### Features
 
-* keep inverted player state after level change ([8703b46](https://github.com/remarkablegames/inversion/commit/8703b46a0753d2c667f3e63f599ca3f358427ab7))
-* keep inverted player state after level restart ([f4d2b1e](https://github.com/remarkablegames/inversion/commit/f4d2b1efd0d73634df469b09b702ab92959d8ffc))
+- keep inverted player state after level change ([8703b46](https://github.com/remarkablegames/inversion/commit/8703b46a0753d2c667f3e63f599ca3f358427ab7))
+- keep inverted player state after level restart ([f4d2b1e](https://github.com/remarkablegames/inversion/commit/f4d2b1efd0d73634df469b09b702ab92959d8ffc))
 
 ## [1.3.3](https://github.com/remarkablegames/inversion/compare/v1.3.2...v1.3.3) (2024-01-03)
 
