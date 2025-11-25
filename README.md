@@ -4,7 +4,7 @@
 
 # Inversion
 
-![release](https://img.shields.io/github/v/release/remarkablegames/inversion)
+[![release](https://img.shields.io/github/v/release/remarkablegames/inversion)](https://github.com/remarkablegames/inversion/releases)
 [![build](https://github.com/remarkablegames/inversion/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/inversion/actions/workflows/build.yml)
 
 <kbd>Inversion</kbd> is a 2D platformer puzzle game where two players must come together to win.
@@ -13,10 +13,9 @@ This game was made for the [Global Game Jam 2022](https://globalgamejam.org/2022
 
 Play the game on:
 
+- [itch.io](https://remarkablegames.itch.io/inversion)
+- [newgrounds](https://www.newgrounds.com/portal/view/831514)
 - [remarkablegames](https://remarkablegames.org/inversion/)
-- [Newgrounds](https://www.newgrounds.com/portal/view/831514)
-- [Itch.io](https://remarkablegames.itch.io/inversion)
-- [Replit](https://replit.com/@remarkablemark/inversion?v=1)
 
 ## Credits
 
