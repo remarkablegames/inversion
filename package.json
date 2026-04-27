@@ -17,7 +17,7 @@
   },
   "homepage": "https://remarkablegames.org/inversion/",
   "dependencies": {
-    "phaser": "3.90.0"
+    "phaser": "4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.2",
