@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.4.4 (2026-10-29)
+
+
+### Miscellaneous Chores
+
+* release 1.4.3 ([b17a064](https://github.com/remarkablegames/inversion/commit/b17a064f069edfe6ddf6fd1954f933ac77fd596d))
+
+
+### Build System
+
+* migrate from parcel to vite ([928875d](https://github.com/remarkablegames/inversion/commit/928875d41838a491d81230acffced0036dfe086c))
+
 ## [1.4.4](https://github.com/remarkablegames/inversion/compare/v1.4.3...v1.4.4) (2025-07-26)
 
 
